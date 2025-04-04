@@ -1,0 +1,19 @@
+false_credentials:
+  email: 'test-mailgmail.com'
+  password: 'zlehaslo'
+  expected_error_msg: 'Nieprawidłowy adres mailowy'
+  expected_password_error_msg: 'Nieprawidłowe dane.'
+
+without_email:
+  expected_error_msg: 'Pole nie może być puste'
+
+without_password:
+  expected_error_msg: 'Pole nie może być puste'
+
+credentials:
+  email: 'mail.testowy.00123@gmail.com'
+  password: 'Haslo123!'
+  expected_url: 'https://answear.com/moje-konto'
+  expected_logout_url: 'https://answear.com/moje-konto/logowanie'
+
+
