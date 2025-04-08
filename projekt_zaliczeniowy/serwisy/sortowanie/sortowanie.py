@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from projekt_zaliczeniowy.serwisy.utils.base_test_utils import load_configuration
 
 
-class SortingByTheLowestPrice:
+class Sorting:
     def __init__(self, driver):
         self.driver = driver
         self.she_button = (By.CSS_SELECTOR, '[href="/c/ona"]')
@@ -14,6 +14,7 @@ class SortingByTheLowestPrice:
         self.filters_button = (By.CSS_SELECTOR, '[data-test="mobileFiltersTriggerButtonWrapper"]')
         self.sorting_button = (By.CSS_SELECTOR, '[data-test="sortFilter"]')
         self.lowest_button = (By.CSS_SELECTOR, '[for="price_asc_radio_0"]')
+        self.highest_button = (By.CSS_SELECTOR, '[for="price_desc_radio_0"]')
         self.back_button = (By.CSS_SELECTOR, '[data-test="mobileFiltersBackButton"]')
         self.view_products = (By.CSS_SELECTOR, '[data-test="mobileFiltersSubmitButton"]')
         self.regular_price = (By.CLASS_NAME, "ProductItemPrice__priceRegular__uGJHk")
@@ -55,6 +56,13 @@ class SortingByTheLowestPrice:
             self.driver.find_element(*self.lowest_button).click()
         except TimeoutException:
             print("Przycisk sortowania od najtańszych nie jest klikalny.")
+
+    def highest_button_click(self):
+        try:
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.highest_button))
+            self.driver.find_element(*self.highest_button).click()
+        except TimeoutException:
+            print("Przycisk sortowania od najdroższych nie jest klikalny.")
 
     def back_button_click(self):
         try:

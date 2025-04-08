@@ -1,10 +1,8 @@
-import time
-
 import pytest
-from numpy.f2py.auxfuncs import throw_error
 from selenium import webdriver
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
-from projekt_zaliczeniowy.serwisy.sortowanie.sortowanie import SortingByTheLowestPrice
+from projekt_zaliczeniowy.serwisy.sortowanie.sortowanie import Sorting
+
 
 @pytest.fixture
 def driver():
@@ -16,7 +14,7 @@ def test_lowest_price(driver):
     website = Login(driver)
     website.open_website()
     website.accept_cookies()
-    lowest_price = SortingByTheLowestPrice(driver)
+    lowest_price = Sorting(driver)
     lowest_price.she_button_click()
     lowest_price.new_button_click()
     lowest_price.filters_button_click()
