@@ -1,10 +1,8 @@
 from selenium.common import TimeoutException
-from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from projekt_zaliczeniowy.serwisy.utils.base_test_utils import load_configuration
-
 
 class Sorting:
     def __init__(self, driver):
@@ -15,9 +13,12 @@ class Sorting:
         self.sorting_button = (By.CSS_SELECTOR, '[data-test="sortFilter"]')
         self.lowest_button = (By.CSS_SELECTOR, '[for="price_asc_radio_0"]')
         self.highest_button = (By.CSS_SELECTOR, '[for="price_desc_radio_0"]')
+        self.popular_button = (By.CSS_SELECTOR, '[for="popularity_radio_0"]')
+        self.newest_button = (By.CSS_SELECTOR, '[for="date_desc_radio_0"]')
         self.back_button = (By.CSS_SELECTOR, '[data-test="mobileFiltersBackButton"]')
         self.view_products = (By.CSS_SELECTOR, '[data-test="mobileFiltersSubmitButton"]')
         self.regular_price = (By.CLASS_NAME, "ProductItemPrice__priceRegular__uGJHk")
+        self.config_data = load_configuration()
 
     def website(self):
         self.driver.get('https://answear.com')
@@ -63,6 +64,20 @@ class Sorting:
             self.driver.find_element(*self.highest_button).click()
         except TimeoutException:
             print("Przycisk sortowania od najdroższych nie jest klikalny.")
+
+    def popular_button_click(self):
+        try:
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.popular_button))
+            self.driver.find_element(*self.popular_button).click()
+        except TimeoutException:
+            print("Przycisk sortowania od popularności nie jest klikalny.")
+
+    def newest_button_click(self):
+        try:
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.newest_button))
+            self.driver.find_element(*self.newest_button).click()
+        except TimeoutException:
+            print("Przycisk sortowania od najnowszych nie jest klikalny.")
 
     def back_button_click(self):
         try:

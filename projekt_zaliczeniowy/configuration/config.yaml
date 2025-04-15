@@ -15,5 +15,5 @@ credentials:
   password: 'Haslo123!'
   expected_url: 'https://answear.com/moje-konto'
   expected_logout_url: 'https://answear.com/moje-konto/logowanie'
-
-
+  expected_sort_popularity_url: 'https://answear.com/s/nowosci-menu/ona?sort=popularity'
+  expected_sort_newest_url: 'https://answear.com/s/nowosci-menu/ona'
