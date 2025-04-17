@@ -31,5 +31,5 @@ def test_add_product_to_cart():
         cart_count = page.inner_text('[data-test="quantitySelectorTemplateCounter"]')
         cart_item = page.locator('[data-test="cartRemoveItem"]')
         assert cart_item.is_visible()
-        assert len(cart_count) > 0
+        assert int(cart_count) > 0
         browser.close()
