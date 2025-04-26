@@ -26,5 +26,5 @@ jobs:
           echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
 
       - name: Run tests
-        working-directory: projekt_zaliczeniowy/tests/
+        working-directory: projekt_zaliczeniowy/tests/testy_wylogowania/
         run: pytest

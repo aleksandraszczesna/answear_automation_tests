@@ -1,3 +1,5 @@
+import tempfile
+
 import pytest
 from selenium import webdriver
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
@@ -7,9 +9,11 @@ from projekt_zaliczeniowy.serwisy.wylogowanie.wylogowanie import Logout
 
 @pytest.fixture
 def driver():
-    # by nie zapisywac danych sesji pusty options
+    # Tworzymy tymczasowy katalog dla danych użytkownika
+    user_data_dir = tempfile.mkdtemp()
+
     options = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(options=options)
+    options.add_argument(f"--user-data-dir={user_data_dir}")  # Wskazujemy unikalny katalog dla danych użytkownika
     driver.maximize_window()
     yield driver
     driver.quit()
