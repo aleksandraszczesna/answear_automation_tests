@@ -1,10 +1,9 @@
-import time
-
 import pytest
 from selenium import webdriver
+
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
-from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url
 from projekt_zaliczeniowy.serwisy.sortowanie.sortowanie import Sorting
+from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url
 
 
 @pytest.fixture

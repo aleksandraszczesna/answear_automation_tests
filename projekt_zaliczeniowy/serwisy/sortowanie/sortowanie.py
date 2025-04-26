@@ -9,13 +9,13 @@ class Sorting:
         self.driver = driver
         self.she_button = (By.CSS_SELECTOR, '[href="/c/ona"]')
         self.new_button = (By.CSS_SELECTOR, '[data-test="newInFemale"]')
-        self.filters_button = (By.CSS_SELECTOR, '[data-test="mobileFiltersTriggerButtonWrapper"]')
+        self.filters_button = (By.CSS_SELECTOR, '[data-test="mobileFiltersTriggerButton"]')
         self.sorting_button = (By.CSS_SELECTOR, '[data-test="sortFilter"]')
         self.lowest_button = (By.CSS_SELECTOR, '[for="price_asc_radio_0"]')
         self.highest_button = (By.CSS_SELECTOR, '[for="price_desc_radio_0"]')
         self.popular_button = (By.CSS_SELECTOR, '[for="popularity_radio_0"]')
         self.newest_button = (By.CSS_SELECTOR, '[for="date_desc_radio_0"]')
-        self.back_button = (By.CSS_SELECTOR, '[data-test="mobileFiltersBackButton"]')
+        self.submit_button = (By.CSS_SELECTOR, '[data-test="selectSubmit"]')
         self.view_products = (By.CSS_SELECTOR, '[data-test="mobileFiltersSubmitButton"]')
         self.regular_price = (By.CLASS_NAME, "ProductItemPrice__priceRegular__uGJHk")
         self.config_data = load_configuration()
@@ -81,8 +81,8 @@ class Sorting:
 
     def back_button_click(self):
         try:
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.back_button))
-            self.driver.find_element(*self.back_button).click()
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.submit_button))
+            self.driver.find_element(*self.submit_button).click()
         except TimeoutException:
             print("Przycisk cofania nie jest klikalny.")
 

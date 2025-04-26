@@ -25,5 +25,5 @@ def test_most_popular(driver):
     most_popular.popular_button_click()
     most_popular.back_button_click()
     most_popular.view_products_click()
-    wait_for_url(driver, config_data['credentials']['expected_sort_popularity_url'], 5)
+    wait_for_url(driver, config_data['credentials']['expected_sort_popularity_url'], 20)
     assert driver.current_url == config_data['credentials']['expected_sort_popularity_url']

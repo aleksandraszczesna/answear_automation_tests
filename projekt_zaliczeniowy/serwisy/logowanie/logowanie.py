@@ -20,10 +20,11 @@ class Login:
         self.user_account_icon = (By.CSS_SELECTOR, '[data-test="my_account_icon"]')
         self.email_field = (By.ID, '_username')
         self.password_field = (By.ID, '_password')
-        self.login_button_click = (By.CSS_SELECTOR, '[class="btn xs-12 l-12 btn--primary btn--fluid Button__buttonContainerFontWeight__3oaib"]')
+        self.login_button_click = (By.CSS_SELECTOR, '[class="btn xs-12 l-12 btnPrimary btn--fluid Button__buttonContainerFontWeight__3oaib"]')
         self.error_message_email = (By.CSS_SELECTOR, '[class="fieldError FieldError__error__eoDKL"]')
         self.error_message_password = (By.XPATH, '//*[@id="root"]/main/div/div/div[2]/div[2]/div[2]/div/div[1]/div[1]/div/form/div[2]/span[2]')
         self.config_data = load_configuration()
+
 
 
     def open_website(self):
@@ -31,42 +32,42 @@ class Login:
 
     def get_element_from_shadow_root(self, by, locator):
         # dostęp do shadow host - dodatkowe opakowanie w html
-        shadow_host = WebDriverWait(self.driver, 10).until(
+        shadow_host = WebDriverWait(self.driver, self.config_data['timeout']['log_in']).until(
             EC.presence_of_element_located((By.ID, 'usercentrics-root'))
         )
         # Uzyskanie dostępu do Shadow DOM - czyli struktury html w tym shadow
         shadow_root = self.driver.execute_script('return arguments[0].shadowRoot', shadow_host)
 
         # Poczekaj, aż element będzie dostępny w shadowRoot
-        element = WebDriverWait(shadow_root, 10).until(
+        element = WebDriverWait(shadow_root, self.config_data['timeout']['log_in']).until(
             EC.presence_of_element_located((by, locator))
         )
         return element
 
     def accept_cookies(self):
         try:
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.accept_cookies_button))
+            WebDriverWait(self.driver, self.config_data['timeout']['log_in']).until(EC.element_to_be_clickable(self.accept_cookies_button))
             self.driver.find_element(*self.accept_cookies_button).click()
         except TimeoutException:
             print("Przycisk akceptacji cookies nie został znaleziony.")
 
     def user_account(self):
         try:
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.user_account_icon))
+            WebDriverWait(self.driver, self.config_data['timeout']['log_in']).until(EC.element_to_be_clickable(self.user_account_icon))
             self.driver.find_element(*self.user_account_icon).click()
         except TimeoutException:
             print("Ikona konta użytkownika nie jest klikalna.")
 
     def insert_email(self, email_input):
         try:
-            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(self.email_field))
+            WebDriverWait(self.driver, self.config_data['timeout']['log_in']).until(EC.presence_of_element_located(self.email_field))
             self.driver.find_element(*self.email_field).send_keys(email_input)
         except TimeoutException:
             print("Pole 'Adres e-mail' nie jest klikalne.")
 
     def insert_password(self, password_input): # element to be clickable
         try:
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.password_field))
+            WebDriverWait(self.driver, self.config_data['timeout']['log_in']).until(EC.element_to_be_clickable(self.password_field))
             self.driver.find_element(*self.password_field).send_keys(password_input)
         except TimeoutException:
             print("Pole 'Hasło' nie zostało znalezione w oczekiwanym czasie.")
@@ -75,14 +76,14 @@ class Login:
 
     def login_button(self):
         try:
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.login_button_click))
+            WebDriverWait(self.driver, self.config_data['timeout']['log_in']).until(EC.visibility_of_element_located(self.login_button_click))
             self.driver.find_element(*self.login_button_click).click()
         except TimeoutException:
             print("Przycisk 'Zaloguj się' nie jest klikalny.")
 
     def email_error(self):
         try:
-            error_element = WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(self.error_message_email))
+            error_element = WebDriverWait(self.driver, self.config_data['timeout']['log_in']).until(EC.visibility_of_element_located(self.error_message_email))
             # pobranie textu z error_element
             error_text = error_element.text
             print(f"Komunikat błędu: {error_text}")
@@ -98,7 +99,7 @@ class Login:
 
     def password_error(self):
         try:
-            password_error_element = WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located(self.error_message_password))
+            password_error_element = WebDriverWait(self.driver, self.config_data['timeout']['log_in']).until(EC.visibility_of_element_located(self.error_message_password))
             # pobranie textu z password error_element
             password_error_text = password_error_element.text
             print(f"Komunikat błędu: {password_error_text}")
