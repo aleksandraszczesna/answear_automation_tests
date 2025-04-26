@@ -14,6 +14,8 @@ def driver():
 
     options = webdriver.ChromeOptions()
     options.add_argument(f"--user-data-dir={user_data_dir}")  # Wskazujemy unikalny katalog dla danych użytkownika
+
+    driver = webdriver.Chrome(options=options)
     driver.maximize_window()
     yield driver
     driver.quit()
