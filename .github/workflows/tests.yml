@@ -21,6 +21,10 @@ jobs:
           pip install -r requirements.txt
           playwright install
 
+      - name: Set PYTHONPATH
+        run: |
+          echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
+
       - name: Run tests
         working-directory: projekt_zaliczeniowy/tests/
         run: pytest
