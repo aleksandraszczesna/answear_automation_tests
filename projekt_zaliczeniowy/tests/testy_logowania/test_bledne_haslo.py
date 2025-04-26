@@ -5,7 +5,9 @@ from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
 
 @pytest.fixture
 def driver():
-    driver = webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(options=options)
+    driver.maximize_window()
     yield driver
     driver.quit()
 
