@@ -1,7 +1,6 @@
-from selenium.webdriver.support import expected_conditions as EC
-
 import pytest
 from selenium import webdriver
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
@@ -9,7 +8,10 @@ from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
 
 @pytest.fixture
 def driver():
-    driver = webdriver.Chrome()
+    # by nie zapisywac danych sesji pusty options
+    options = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(options=options)
+    driver.maximize_window()
     yield driver
     driver.quit()
 

@@ -6,7 +6,9 @@ from projekt_zaliczeniowy.serwisy.sortowanie.sortowanie import Sorting
 
 @pytest.fixture
 def driver():
-    driver = webdriver.Chrome()
+    # by nie zapisywac danych sesji pusty options
+    options = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(options=options)
     yield driver
     driver.quit()
 

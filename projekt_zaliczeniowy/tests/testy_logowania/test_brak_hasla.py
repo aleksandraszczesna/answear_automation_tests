@@ -5,7 +5,10 @@ from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
 
 @pytest.fixture
 def driver():
-    driver = webdriver.Chrome()
+    # by nie zapisywac danych sesji pusty options
+    options = webdriver.ChromeOptions()
+    driver = webdriver.Chrome(options=options)
+    driver.maximize_window()
     yield driver
     driver.quit()
 
