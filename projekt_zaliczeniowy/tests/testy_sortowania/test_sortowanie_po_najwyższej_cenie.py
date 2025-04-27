@@ -8,7 +8,7 @@ from projekt_zaliczeniowy.serwisy.utils.base_test_utils import selenium_chrome_t
 @pytest.fixture
 def driver():
     # to run it with gui interface pass False as arg
-    yield from selenium_chrome_tests_setup(True)
+    yield from selenium_chrome_tests_setup()
 
 
 def test_highest_price(driver):
