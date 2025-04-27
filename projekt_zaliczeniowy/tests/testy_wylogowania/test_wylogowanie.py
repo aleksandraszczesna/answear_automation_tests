@@ -1,13 +1,13 @@
 import pytest
 
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
-from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url, chrome_tests_setup
+from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url, selenium_chrome_tests_setup
 from projekt_zaliczeniowy.serwisy.wylogowanie.wylogowanie import Logout
 
 
 @pytest.fixture
 def driver():
-    yield from chrome_tests_setup()
+    yield from selenium_chrome_tests_setup(True)
 
 def test_logout(driver):
     login = Login(driver)
