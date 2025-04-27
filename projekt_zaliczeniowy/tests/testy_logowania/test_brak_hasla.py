@@ -1,16 +1,13 @@
 import pytest
-from selenium import webdriver
 
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
+from projekt_zaliczeniowy.serwisy.utils.base_test_utils import selenium_chrome_tests_setup
+
 
 @pytest.fixture
 def driver():
-    # by nie zapisywac danych sesji pusty options
-    options = webdriver.ChromeOptions()
-    driver = webdriver.Chrome(options=options)
-    driver.maximize_window()
-    yield driver
-    driver.quit()
+    # to run it with gui interface pass False as arg
+    yield from selenium_chrome_tests_setup()
 
 def test_without_password(driver):
     without_password = Login(driver)
