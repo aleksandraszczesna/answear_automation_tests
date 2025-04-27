@@ -1,24 +1,13 @@
-import tempfile
-
 import pytest
-from selenium import webdriver
+
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
-from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url
+from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url, chrome_tests_setup
 from projekt_zaliczeniowy.serwisy.wylogowanie.wylogowanie import Logout
 
 
 @pytest.fixture
 def driver():
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless=new')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument(f'--user-data-dir={tempfile.mkdtemp()}')
-
-    driver = webdriver.Chrome(options=options)
-    driver.maximize_window()
-    yield driver
-    driver.quit()
+    yield from chrome_tests_setup()
 
 def test_logout(driver):
     login = Login(driver)
