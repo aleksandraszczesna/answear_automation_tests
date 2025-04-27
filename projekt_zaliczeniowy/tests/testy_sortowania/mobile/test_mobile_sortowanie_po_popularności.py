@@ -10,6 +10,7 @@ from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url
 def driver():
     # by nie zapisywac danych sesji pusty options
     options = webdriver.ChromeOptions()
+    options.add_argument('--headless=new')
     driver = webdriver.Chrome(options=options)
     driver.set_window_size(430, 932)
     yield driver

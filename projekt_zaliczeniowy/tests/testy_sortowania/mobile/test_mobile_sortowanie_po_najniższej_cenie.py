@@ -9,6 +9,7 @@ from projekt_zaliczeniowy.serwisy.sortowanie.sortowanie import Sorting
 def driver():
     # by nie zapisywac danych sesji pusty options
     options = webdriver.ChromeOptions()
+    options.add_argument('--headless=new')
     driver = webdriver.Chrome(options=options)
     driver.set_window_size(430, 932)
     yield driver
