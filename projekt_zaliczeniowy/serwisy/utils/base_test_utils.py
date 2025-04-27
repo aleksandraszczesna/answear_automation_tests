@@ -4,13 +4,13 @@ from pathlib import Path
 from selenium import webdriver
 import yaml
 
-def selenium_chrome_tests_setup(is_headless: bool):
+def selenium_chrome_tests_setup(headless: bool):
     # Tworzy obiekt opcji dla Chrome, który pozwala skonfigurować sposób uruchomienia przeglądarki
     options = webdriver.ChromeOptions()
     # --headless=new: Uruchamia Chrome w trybie headless (bez interfejsu graficznego).
     # Opcja 'new' jest nowym, bardziej stabilnym trybem headless, wprowadzonym w Chrome 109.
     # Jest to szczególnie przydatne w środowiskach CI (np. GitHub Actions), gdzie nie ma dostępu do GUI.
-    if(is_headless):
+    if headless:
         options.add_argument('--headless=new')
     driver = webdriver.Chrome(options=options)
     driver.maximize_window()
