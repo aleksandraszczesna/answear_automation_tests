@@ -9,15 +9,18 @@ class Sorting:
         self.driver = driver
         self.she_button = (By.CSS_SELECTOR, '[href="/c/ona"]')
         self.new_button = (By.CSS_SELECTOR, '[data-test="newInFemale"]')
-        self.filters_button = (By.CSS_SELECTOR, '[data-test="mobileFiltersTriggerButton"]')
+        self.mobile_filters_button = (By.CSS_SELECTOR, '[data-test="mobileFiltersTriggerButtonWrapper"]')
+        self.filters_button = (By.CSS_SELECTOR, '[data-test="productSortDropdown"]')
         self.sorting_button = (By.CSS_SELECTOR, '[data-test="sortFilter"]')
         self.lowest_button = (By.CSS_SELECTOR, '[for="price_asc_radio_0"]')
         self.highest_button = (By.CSS_SELECTOR, '[for="price_desc_radio_0"]')
         self.popular_button = (By.CSS_SELECTOR, '[for="popularity_radio_0"]')
         self.newest_button = (By.CSS_SELECTOR, '[for="date_desc_radio_0"]')
+        self.back_button = (By.CSS_SELECTOR, '[data-test="mobileFiltersCloseButton"]')
         self.submit_button = (By.CSS_SELECTOR, '[data-test="selectSubmit"]')
         self.view_products = (By.CSS_SELECTOR, '[data-test="mobileFiltersSubmitButton"]')
-        self.regular_price = (By.CLASS_NAME, "ProductItemPrice__priceRegular__uGJHk")
+        self.regular_price = (By.CSS_SELECTOR, '[data-test="regularPrice"]')
+
         self.config_data = load_configuration()
 
     def website(self):
@@ -36,6 +39,13 @@ class Sorting:
             self.driver.find_element(*self.new_button).click()
         except TimeoutException:
             print("Przycisk Nowości nie jest klikalny.")
+
+    def mobile_filters_button_click(self):
+        try:
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.mobile_filters_button))
+            self.driver.find_element(*self.mobile_filters_button).click()
+        except TimeoutException:
+            print("Przycisk filtr nie jest klikalny.")
 
     def filters_button_click(self):
         try:
@@ -81,10 +91,17 @@ class Sorting:
 
     def back_button_click(self):
         try:
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.back_button))
+            self.driver.find_element(*self.back_button).click()
+        except TimeoutException:
+            print("Przycisk cofania filtrów nie jest klikalny.")
+
+    def submit_button_click(self):
+        try:
             WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.submit_button))
             self.driver.find_element(*self.submit_button).click()
         except TimeoutException:
-            print("Przycisk cofania nie jest klikalny.")
+            print("Przycisk zapisywania filtrów nie jest klikalny.")
 
     def view_products_click(self):
         try:
@@ -93,9 +110,9 @@ class Sorting:
         except TimeoutException:
             print("Przycisk pokaż produkty nie jest klikalny.")
 
-    def products_list(self):
+    def product_list(self):
         try:
-           WebDriverWait(self.driver, 10).until(EC.presence_of_all_elements_located(self.regular_price))
+           WebDriverWait(self.driver, 10).until(EC.visibility_of_all_elements_located(self.regular_price))
            return self.driver.find_elements(*self.regular_price)
         except Exception as e:
             print(f"Ceny produktów nie są dostępne: {e}")

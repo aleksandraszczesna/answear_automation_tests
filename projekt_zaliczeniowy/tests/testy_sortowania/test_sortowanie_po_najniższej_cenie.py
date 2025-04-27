@@ -1,5 +1,6 @@
 import pytest
 from selenium import webdriver
+
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
 from projekt_zaliczeniowy.serwisy.sortowanie.sortowanie import Sorting
 
@@ -9,7 +10,7 @@ def driver():
     # by nie zapisywac danych sesji pusty options
     options = webdriver.ChromeOptions()
     driver = webdriver.Chrome(options=options)
-    # TODO ustawic rozmiar dla telefonu
+    driver.maximize_window()
     yield driver
     driver.quit()
 
@@ -21,11 +22,9 @@ def test_lowest_price(driver):
     lowest_price.she_button_click()
     lowest_price.new_button_click()
     lowest_price.filters_button_click()
-    lowest_price.sorting_button_click()
     lowest_price.lowest_button_click()
-    lowest_price.back_button_click()
-    lowest_price.view_products_click()
-    produkty = lowest_price.products_list()
+    lowest_price.submit_button_click()
+    produkty = lowest_price.product_list()
     poprzednia_cena = 0
     for produkt in produkty:
         cena_zl = produkt.text
