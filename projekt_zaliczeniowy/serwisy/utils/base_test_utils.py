@@ -11,19 +11,19 @@ def chrome_tests_setup():
     # --headless=new: Uruchamia Chrome w trybie headless (bez interfejsu graficznego).
     # Opcja 'new' jest nowym, bardziej stabilnym trybem headless, wprowadzonym w Chrome 109.
     # Jest to szczególnie przydatne w środowiskach CI (np. GitHub Actions), gdzie nie ma dostępu do GUI.
-    # options.add_argument('--headless=new')
+    options.add_argument('--headless=new')
     # --no-sandbox: Wymagana jest dla środowisk CI (np. GitHub Actions, Linux).
     # Sandbox to mechanizm izolacji, który w niektórych środowiskach (np. w CI) może powodować problemy.
     # Wyłączenie sandboxa pozwala na uruchomienie Chrome bez tych restrykcji.
-    options.add_argument('--no-sandbox')
+    # options.add_argument('--no-sandbox')
     # --disable-dev-shm-usage: Wyłącza używanie pamięci współdzielonej (SHM) dla aplikacji.
     # W CI lub kontenerach Docker ta opcja jest potrzebna, ponieważ /dev/shm (gdzie przechowywana jest pamięć współdzielona)
     # może mieć ograniczoną wielkość, co może prowadzić do problemów z uruchamianiem Chrome.
-    options.add_argument('--disable-dev-shm-usage')
+    # options.add_argument('--disable-dev-shm-usage')
     # --user-data-dir: Ustala unikalny katalog danych użytkownika dla każdej sesji przeglądarki.
     # Dzięki temu unikamy konfliktów z danymi sesji w środowiskach wielo-testowych.
     # `tempfile.mkdtemp()` tworzy tymczasowy katalog w systemie plików.
-    options.add_argument(f'--user-data-dir={tempfile.mkdtemp()}')
+    # options.add_argument(f'--user-data-dir={tempfile.mkdtemp()}')
     driver = webdriver.Chrome(options=options)
     driver.maximize_window()
     yield driver
