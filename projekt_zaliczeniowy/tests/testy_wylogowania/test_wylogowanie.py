@@ -14,6 +14,8 @@ def driver():
 
     options = webdriver.ChromeOptions()
     options.add_argument(f"--user-data-dir={user_data_dir}")  # Wskazujemy unikalny katalog dla danych użytkownika
+    options.add_argument('--no-sandbox')  # szczególnie ważne w CI
+    options.add_argument('--disable-dev-shm-usage')  # też ważne w CI
 
     driver = webdriver.Chrome(options=options)
     driver.maximize_window()
