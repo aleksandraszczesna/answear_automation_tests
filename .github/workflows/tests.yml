@@ -7,8 +7,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install Chrome stable
-        run: sudo apt-get update && sudo apt-get install -y google-chrome-stable
+      - name: Check Chrome version
+        run: google-chrome --version
+
+      - name: Check chromedriver version
+        run: chromedriver --version
 
       - name: Checkout repo
         uses: actions/checkout@v3

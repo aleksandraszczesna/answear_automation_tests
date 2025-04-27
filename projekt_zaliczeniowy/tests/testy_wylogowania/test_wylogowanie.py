@@ -9,13 +9,11 @@ from projekt_zaliczeniowy.serwisy.wylogowanie.wylogowanie import Logout
 
 @pytest.fixture
 def driver():
-    # Tworzymy tymczasowy katalog dla danych użytkownika
-    user_data_dir = tempfile.mkdtemp()
-
     options = webdriver.ChromeOptions()
-    options.add_argument(f"--user-data-dir={user_data_dir}")  # Wskazujemy unikalny katalog dla danych użytkownika
-    options.add_argument('--no-sandbox')  # szczególnie ważne w CI
-    options.add_argument('--disable-dev-shm-usage')  # też ważne w CI
+    options.add_argument('--headless=new')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument(f'--user-data-dir={tempfile.mkdtemp()}')
 
     driver = webdriver.Chrome(options=options)
     driver.maximize_window()
