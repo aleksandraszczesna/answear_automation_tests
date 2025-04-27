@@ -7,7 +7,7 @@ from projekt_zaliczeniowy.serwisy.koszyk.koszyk import Cart
 @pytest.mark.test
 def test_product_quantity_change():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         change = Cart(page)
         change.go_to_new_in_female()

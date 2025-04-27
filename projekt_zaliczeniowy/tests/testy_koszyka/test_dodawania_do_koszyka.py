@@ -7,8 +7,7 @@ from projekt_zaliczeniowy.serwisy.koszyk.koszyk import Cart
 @pytest.mark.test
 def test_add_product_to_cart():
     with sync_playwright() as p:
-        # TODO wydzielic ustawienie do uruchomienia testow do base_test_utils i dodac ustawienie headless parametrem
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         add = Cart(page)
         add.go_to_new_in_female()
