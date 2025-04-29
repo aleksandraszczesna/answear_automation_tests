@@ -7,7 +7,11 @@ class Cart:
 
     def go_to_new_in_female(self):
         self.page.goto("https://answear.com/")
-        self.page.click('[data-test="cookiesAcceptButton"]')
+        # Bezpieczne kliknięcie w ciasteczka
+        try:
+            self.page.click('[data-test="cookiesAcceptButton"]', timeout=3000)  # 3 sekundy na pojawienie się przycisku
+        except TimeoutError:
+            print("Przycisk cookies nie pojawił się – kontynuuję dalej.")
         self.page.click('[href="/c/ona"]')
         self.page.click('[data-test="newInFemale"]')
 

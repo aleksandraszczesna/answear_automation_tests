@@ -1,5 +1,4 @@
 import pytest
-from selenium import webdriver
 
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
 from projekt_zaliczeniowy.serwisy.sortowanie.sortowanie import Sorting
@@ -11,8 +10,7 @@ def driver():
     # to run it with gui interface pass False as arg move windows size and flag for headless to config
     yield from selenium_chrome_tests_setup("430,932")
 
-
-def test_most_popular(driver):
+def test_newest(driver):
     website = Login(driver)
     website.open_website()
     website.accept_cookies()

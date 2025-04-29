@@ -7,9 +7,13 @@ from projekt_zaliczeniowy.serwisy.koszyk.koszyk import Cart
 @pytest.mark.test
 def test_add_product_to_cart():
     with sync_playwright() as p:
-        # ustawiac headless z configa
+        # Uruchamianie przeglądarki w trybie headless
         browser = p.chromium.launch(headless=True)
+        # Nowa strona
         page = browser.new_page()
+        # Ustawienie rozmiaru okna (viewport)
+        page.set_viewport_size({"width": 1280, "height": 800})
+
         add = Cart(page)
         add.go_to_new_in_female()
         add.get_first_element_from_the_site()

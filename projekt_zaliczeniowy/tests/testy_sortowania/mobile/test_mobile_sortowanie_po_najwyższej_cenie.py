@@ -1,5 +1,4 @@
 import pytest
-from selenium import webdriver
 
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
 from projekt_zaliczeniowy.serwisy.sortowanie.sortowanie import Sorting

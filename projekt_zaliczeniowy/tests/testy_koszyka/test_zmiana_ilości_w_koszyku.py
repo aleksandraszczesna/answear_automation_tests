@@ -7,8 +7,13 @@ from projekt_zaliczeniowy.serwisy.koszyk.koszyk import Cart
 @pytest.mark.test
 def test_product_quantity_change():
     with sync_playwright() as p:
+        # Uruchamianie przeglądarki w trybie headless
         browser = p.chromium.launch(headless=True)
+        # Nowa strona
         page = browser.new_page()
+        # Ustawienie rozmiaru okna (viewport)
+        page.set_viewport_size({"width": 1280, "height": 800})
+
         change = Cart(page)
         change.go_to_new_in_female()
         change.get_first_element_from_the_site()
