@@ -8,6 +8,7 @@ from projekt_zaliczeniowy.serwisy.koszyk.koszyk import Cart
 def test_add_product_to_cart():
     with sync_playwright() as p:
         # Uruchamianie przeglądarki w trybie headless
+        # TODO wyniesc  do utils i zrobic metode by ladowac headless z configa
         browser = p.chromium.launch(headless=True)
         # Nowa strona
         page = browser.new_page()

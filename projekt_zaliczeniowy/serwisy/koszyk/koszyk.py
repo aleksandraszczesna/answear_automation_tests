@@ -1,4 +1,5 @@
 import time
+from playwright.sync_api import TimeoutError
 
 
 class Cart:
@@ -27,11 +28,16 @@ class Cart:
         self.page.click('[data-test="modal-close-button"]')  # zamykanie okna zapisu do newslettera
         self.page.wait_for_selector('[data-test="size_dropdown"]')
         self.page.click('[data-test="size_dropdown"]')
-        locator_xs = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)', has_text="XS")
-        locator_s = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)', has_text="S")
-        locator_m = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)', has_text="M")
-        locator_l = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)', has_text="L")
-        locator_xl = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)', has_text="XL")
+        locator_xs = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',
+                                       has_text="XS")
+        locator_s = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',
+                                      has_text="S")
+        locator_m = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',
+                                      has_text="M")
+        locator_l = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',
+                                      has_text="L")
+        locator_xl = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',
+                                       has_text="XL")
         if locator_xs.is_visible():
             locator_xs.click()
         elif locator_s.is_visible():
@@ -71,6 +77,7 @@ class Cart:
 
     def remove_from_cart(self):
         self.page.click('[data-test="cartRemoveItem"]')
+
 
 class CartInfo:
     def __init__(self, cart_count, cart_item):
