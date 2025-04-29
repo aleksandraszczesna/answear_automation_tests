@@ -8,7 +8,7 @@ from projekt_zaliczeniowy.serwisy.wylogowanie.wylogowanie import Logout
 @pytest.fixture
 def driver():
     # to run it with gui interface pass False as arg
-    yield from selenium_chrome_tests_setup()
+    yield from selenium_chrome_tests_setup("1920,1080")
 
 def test_logout(driver):
     login = Login(driver)

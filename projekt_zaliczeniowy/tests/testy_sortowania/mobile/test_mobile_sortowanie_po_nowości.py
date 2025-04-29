@@ -3,18 +3,13 @@ from selenium import webdriver
 
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
 from projekt_zaliczeniowy.serwisy.sortowanie.sortowanie import Sorting
-from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url
+from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url, selenium_chrome_tests_setup
 
 
 @pytest.fixture
 def driver():
-    # by nie zapisywac danych sesji pusty options
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless=new')
-    driver = webdriver.Chrome(options=options)
-    driver.set_window_size(430, 932)
-    yield driver
-    driver.quit()
+    # to run it with gui interface pass False as arg move windows size and flag for headless to config
+    yield from selenium_chrome_tests_setup("430,932")
 
 
 def test_most_popular(driver):
