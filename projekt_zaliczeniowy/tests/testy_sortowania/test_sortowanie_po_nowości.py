@@ -10,7 +10,6 @@ def driver():
     # to run it with gui interface pass False as arg
     yield from selenium_chrome_tests_setup("1920,1080")
 
-
 def test_most_popular(driver):
     website = Login(driver)
     website.open_website()

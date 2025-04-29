@@ -31,6 +31,14 @@ jobs:
         run: |
           echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
 
+      - name: Nadpisz wartość some_property na true
+        run: |
+          sed -i 's/headless: false/headless: true/' projekt_zaliczeniowy/configuration/config.yaml
+
+      - name: Pokaż zmodyfikowany config.yaml
+        run: |
+          cat projekt_zaliczeniowy/configuration/config.yaml
+
       - name: Run tests
         working-directory: projekt_zaliczeniowy/tests/
         run: pytest

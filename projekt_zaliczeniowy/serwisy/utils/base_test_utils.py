@@ -4,6 +4,8 @@ from pathlib import Path
 from selenium import webdriver
 import yaml
 
+# jezeli jakas metoda powtarza sie w wiecej niz jednej klasie testowej powinna trafiac tutaj
+
 def selenium_chrome_tests_setup(windows_size):
     # Tworzy obiekt opcji dla Chrome, który pozwala skonfigurować sposób uruchomienia przeglądarki
     options = webdriver.ChromeOptions()
@@ -17,7 +19,6 @@ def selenium_chrome_tests_setup(windows_size):
     yield driver
     driver.quit()
 
-# jezeli jakas metoda powtarza sie w wiecej niz jednej klasie testowej powinna trafiac tutaj
 def wait_for_url(driver, url, time):
     WebDriverWait(driver, time).until(EC.url_to_be(url))
 
