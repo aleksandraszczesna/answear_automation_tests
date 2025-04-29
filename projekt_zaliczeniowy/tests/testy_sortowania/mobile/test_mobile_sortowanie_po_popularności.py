@@ -8,7 +8,7 @@ from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url, sel
 @pytest.fixture
 def driver():
     # to run it with gui interface pass False as arg move windows size and flag for headless to config
-    yield from selenium_chrome_tests_setup("430,932")
+    yield from selenium_chrome_tests_setup("430x932")
 
 def test_most_popular(driver):
     website = Login(driver)
