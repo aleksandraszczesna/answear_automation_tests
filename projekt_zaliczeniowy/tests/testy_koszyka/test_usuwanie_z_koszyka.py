@@ -5,7 +5,7 @@ from projekt_zaliczeniowy.serwisy.koszyk.koszyk import Cart
 @pytest.mark.test
 def test_remove_product_to_cart():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         remove = Cart(page)
         remove.go_to_new_in_female()

@@ -1,4 +1,4 @@
-headless: ${SOME_PROPERTY:-false}
+headless: false
 false_credentials:
   email: 'test-mailgmail.com'
   password: 'zlehaslo'
