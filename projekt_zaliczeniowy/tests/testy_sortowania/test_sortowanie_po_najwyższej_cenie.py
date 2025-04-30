@@ -2,13 +2,12 @@ import pytest
 
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
 from projekt_zaliczeniowy.serwisy.sortowanie.sortowanie import Sorting
-from projekt_zaliczeniowy.serwisy.utils.base_test_utils import selenium_chrome_tests_setup
+from projekt_zaliczeniowy.serwisy.utils.base_test_utils import selenium_chrome_tests_setup, WEB_WINDOW_SIZE
 
 
 @pytest.fixture
 def driver():
-    # to run it with gui interface pass False as arg, move args to config
-    yield from selenium_chrome_tests_setup("1920,1080")
+    yield from selenium_chrome_tests_setup(WEB_WINDOW_SIZE)
 
 
 def test_highest_price(driver):

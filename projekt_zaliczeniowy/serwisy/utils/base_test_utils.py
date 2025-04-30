@@ -1,3 +1,4 @@
+from playwright.sync_api import sync_playwright
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from pathlib import Path
@@ -6,13 +7,18 @@ import yaml
 
 # jezeli jakas metoda powtarza sie w wiecej niz jednej klasie testowej powinna trafiac tutaj
 
+WEB_WINDOW_SIZE = "1920x1080"
+MOBILE_WINDOW_SIZE = "430x932"
+
 def selenium_chrome_tests_setup(windows_size):
     # Tworzy obiekt opcji dla Chrome, który pozwala skonfigurować sposób uruchomienia przeglądarki
     options = webdriver.ChromeOptions()
     # --headless=new: Uruchamia Chrome w trybie headless (bez interfejsu graficznego).
     # Opcja 'new' jest nowym, bardziej stabilnym trybem headless, wprowadzonym w Chrome 109.
     # Jest to szczególnie przydatne w środowiskach CI (np. GitHub Actions), gdzie nie ma dostępu do GUI.
-    options.add_argument('--headless=new')
+    config = load_configuration()
+    if config['headless']:
+        options.add_argument('--headless=new')
     # Ustawienie windows-size
     options.add_argument(f"--window-size={windows_size}")
     driver = webdriver.Chrome(options=options)

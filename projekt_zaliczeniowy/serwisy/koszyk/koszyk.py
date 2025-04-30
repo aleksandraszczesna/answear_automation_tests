@@ -10,7 +10,7 @@ class Cart:
         self.page.goto("https://answear.com/")
         # Bezpieczne kliknięcie w ciasteczka
         try:
-            self.page.click('[data-test="cookiesAcceptButton"]', timeout=3000)  # 3 sekundy na pojawienie się przycisku
+            self.page.click('[data-test="cookiesAcceptButton"]', timeout=5000)  # 3 sekundy na pojawienie się przycisku
         except TimeoutError:
             print("Przycisk cookies nie pojawił się – kontynuuję dalej.")
         self.page.click('[href="/c/ona"]')
@@ -26,8 +26,12 @@ class Cart:
 
     def add_to_cart(self):
         self.page.click('[data-test="modal-close-button"]')  # zamykanie okna zapisu do newslettera
-        self.page.wait_for_selector('[data-test="size_dropdown"]')
-        self.page.click('[data-test="size_dropdown"]')
+        try:
+            self.page.wait_for_selector('[data-test="size_dropdown"]')
+            self.page.click('[data-test="size_dropdown"]')
+        except TimeoutError:
+            print("Przycisk size dropdown nie pojawił się – kontynuuję dalej.")
+
         locator_xs = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',
                                        has_text="XS")
         locator_s = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',

@@ -2,14 +2,16 @@ import pytest
 from playwright.sync_api import sync_playwright
 
 from projekt_zaliczeniowy.serwisy.koszyk.koszyk import Cart
+from projekt_zaliczeniowy.serwisy.utils.base_test_utils import load_configuration
 
 
 @pytest.mark.test
 def test_add_product_to_cart():
     with sync_playwright() as p:
         # Uruchamianie przeglądarki w trybie headless
-        # TODO wyniesc  do utils i zrobic metode by ladowac headless z configa
-        browser = p.chromium.launch(headless=True)
+        config = load_configuration()
+        is_headless = config['headless']
+        browser = p.chromium.launch(headless=is_headless)
         # Nowa strona
         page = browser.new_page()
         # Ustawienie rozmiaru okna (viewport)

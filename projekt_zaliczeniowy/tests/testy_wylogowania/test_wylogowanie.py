@@ -1,14 +1,15 @@
 import pytest
 
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
-from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url, selenium_chrome_tests_setup
+from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url, selenium_chrome_tests_setup, \
+    WEB_WINDOW_SIZE
 from projekt_zaliczeniowy.serwisy.wylogowanie.wylogowanie import Logout
 
 
 @pytest.fixture
 def driver():
     # to run it with gui interface pass False as arg
-    yield from selenium_chrome_tests_setup("1920,1080")
+    yield from selenium_chrome_tests_setup(WEB_WINDOW_SIZE)
 
 def test_logout(driver):
     login = Login(driver)
