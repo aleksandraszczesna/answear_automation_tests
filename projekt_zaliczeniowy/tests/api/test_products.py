@@ -23,7 +23,7 @@ def test_products_success():
 
         response_body = response.json()
         assert response_body["category"]["name"] == "Ona"
-        assert len(response_body["items"]) == 20
+        assert len(response_body["items"]) == 80
         assert response_body["pseudocategory"]["name"] == "Nowo\u015bci w answear"
 
 @pytest.mark.test

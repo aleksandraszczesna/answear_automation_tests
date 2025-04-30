@@ -42,7 +42,7 @@ class Sorting:
 
     def mobile_filters_button_click(self):
         try:
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.mobile_filters_button))
+            WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable(self.mobile_filters_button))
             self.driver.find_element(*self.mobile_filters_button).click()
         except TimeoutException:
             print("Przycisk filtr nie jest klikalny.")
