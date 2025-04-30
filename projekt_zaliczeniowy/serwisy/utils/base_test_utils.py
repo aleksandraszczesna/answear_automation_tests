@@ -1,14 +1,14 @@
-from playwright.sync_api import sync_playwright
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from pathlib import Path
-from selenium import webdriver
+
 import yaml
+from selenium import webdriver
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 # jezeli jakas metoda powtarza sie w wiecej niz jednej klasie testowej powinna trafiac tutaj
 
-WEB_WINDOW_SIZE = "1920x1080"
-MOBILE_WINDOW_SIZE = "430x932"
+WEB_WINDOW_SIZE = "1920,1080"
+MOBILE_WINDOW_SIZE = "430,932"
 
 def selenium_chrome_tests_setup(windows_size):
     # Tworzy obiekt opcji dla Chrome, który pozwala skonfigurować sposób uruchomienia przeglądarki

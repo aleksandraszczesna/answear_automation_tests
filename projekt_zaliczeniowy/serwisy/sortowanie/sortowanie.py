@@ -9,7 +9,7 @@ class Sorting:
         self.driver = driver
         self.she_button = (By.CSS_SELECTOR, '[href="/c/ona"]')
         self.new_button = (By.CSS_SELECTOR, '[data-test="newInFemale"]')
-        self.mobile_filters_button = (By.CSS_SELECTOR, '[data-test="mobileFiltersTriggerButtonWrapper"]')
+        self.mobile_filters_button = (By.CSS_SELECTOR, '[data-test="mobileFiltersTriggerButton"]')
         self.filters_button = (By.CSS_SELECTOR, '[data-test="productSortDropdown"]')
         self.sorting_button = (By.CSS_SELECTOR, '[data-test="sortFilter"]')
         self.lowest_button = (By.CSS_SELECTOR, '[for="price_asc_radio_0"]')
