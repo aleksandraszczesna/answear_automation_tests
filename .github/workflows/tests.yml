@@ -120,12 +120,25 @@ jobs:
           publish_branch: gh-pages  # Gałąź, na której będzie opublikowany raport
           publish_dir: allure-history  # Katalog, który zostanie opublikowany na GitHub Pages
 
-      - name: Add comment with link to Allure report
-        uses: actions/github-script@v6
+      - name: Create redirect HTML file
+        run: |
+          cat <<EOF > redirect.html
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta http-equiv="refresh" content="0;url=https://github.com/${{ github.repository_owner }}/${{ github.repository }}/">
+              <title>Redirecting to Allure Report...</title>
+          </head>
+          <body>
+              <p>If you are not redirected, <a href="https://github.com/${{ github.repository_owner }}/${{ github.repository }}/">click here</a>.</p>
+          </body>
+          </html>
+          EOF
+
+      # Upload the generated HTML redirect file as an artifact
+      - name: Upload redirect HTML file
+        uses: actions/upload-artifact@v4
         with:
-          script: |
-            const comment = `Allure report is available! You can view the report [here](https://<YOUR_USERNAME>.github.io/<YOUR_REPO>/)`;
-            github.rest.issues.createComment({
-              ...context.issue,
-              body: comment,
-            });
+          name: allure-report-redirect
+          path: redirect.html
