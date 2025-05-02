@@ -58,7 +58,6 @@ jobs:
           python -m pip install --upgrade pip  # Aktualizacja pip
           pip install -r requirements.txt    # Instalacja zależności
           playwright install                  # Instalacja Playwright i przeglądarek
-          pip install pytest allure-pytest
 
       # Ustawienie zmiennej środowiskowej PYTHONPATH, wskazującej katalog główny projektu
       - name: Set PYTHONPATH
@@ -78,7 +77,7 @@ jobs:
       # Uruchomienie testów z Allure, zapis wyników do katalogu 'allure-results'
       - name: Run tests with Allure
         working-directory: projekt_zaliczeniowy/tests/  # Określamy katalog roboczy z testami
-        run: pytest -m ${{ github.event.inputs.marker }} --alluredir=allure-results  # Uruchomienie pytest i zapisanie wyników do katalogu allure-results
+        run: pytest -m ${{ env.marker }} --alluredir=allure-results  # Uruchomienie pytest i zapisanie wyników do katalogu allure-results
 
       # Generowanie raportu Allure z wyników testów
       - name: Generate Allure report
