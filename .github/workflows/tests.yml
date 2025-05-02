@@ -49,6 +49,10 @@ jobs:
           playwright install                  # Instalacja Playwright i przeglądarek
           pip install pytest allure-pytest
 
+      # Sprawdzenie, czy Allure jest zainstalowane
+      - name: Check if Allure is installed
+        run: allure --version
+
       # Ustawienie zmiennej środowiskowej PYTHONPATH, wskazującej katalog główny projektu
       - name: Set PYTHONPATH
         run: |
