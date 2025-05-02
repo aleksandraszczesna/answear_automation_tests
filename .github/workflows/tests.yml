@@ -51,6 +51,17 @@ jobs:
         with:
           python-version: 3.13
 
+      # Instalacja Javy (OpenJDK 11) wymagana do allure
+      - name: Install Java (OpenJDK 11)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openjdk-11-jdk  # Instalacja OpenJDK 11
+
+      # Instalacja Allure CLI
+      - name: Install Allure CLI
+        run: |
+          sudo apt-get install -y allure  # Instalacja Allure
+
       # Instalowanie zależności: aktualizacja pip oraz instalacja zależności z pliku requirements.txt
       # Zainstalowanie Playwright (biblioteka do testów E2E)
       - name: Install dependencies
