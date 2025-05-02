@@ -101,6 +101,9 @@ jobs:
           allure_history: allure-history
           allure_results: projekt_zaliczeniowy/tests/allure-results  # Folder z wynikami testów
 
+      - name: list allure-history contents
+        run: ls -R allure-history || echo "Brak plików do opublikowania"
+
       # Wysłanie wygenerowanego raportu jako artefakt, który będzie dostępny po zakończeniu workflow
       - name: Upload Allure report
         uses: actions/upload-artifact@v4  # Akcja do uploadu artefaktów
