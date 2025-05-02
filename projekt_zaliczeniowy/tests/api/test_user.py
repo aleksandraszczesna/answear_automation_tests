@@ -3,7 +3,7 @@ import pytest
 from playwright.sync_api import sync_playwright
 
 
-@pytest.mark.test
+@pytest.mark.api
 @allure.feature("API")
 @allure.story("Poprawne pobranie informacji czy uzytkownik jest zalogowany")
 def test_user_success():
@@ -21,7 +21,7 @@ def test_user_success():
         assert response_body["userType"] == "not logged in"
 
 
-@pytest.mark.test
+@pytest.mark.api
 @allure.feature("API")
 @allure.story("Błędne pobranie informacji czy uzytkownik jest zalogowany")
 def test_user_failure():
