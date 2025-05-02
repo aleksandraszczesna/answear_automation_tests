@@ -105,7 +105,7 @@ class Sorting:
 
     def view_products_click(self):
         try:
-            WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable(self.view_products))
+            WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(self.view_products))
             self.driver.find_element(*self.view_products).click()
         except TimeoutException:
             print("Przycisk pokaż produkty nie jest klikalny.")
