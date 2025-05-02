@@ -51,22 +51,6 @@ jobs:
         with:
           python-version: 3.13
 
-      # Instalacja Javy (OpenJDK 11) wymagana do allure
-      - name: Install Java (OpenJDK 11)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y openjdk-11-jdk  # Instalacja OpenJDK 11
-
-      # Instalacja Allure CLI za pomocą curl
-      - name: Install Allure CLI
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y curl  # Instalacja curl, jeśli jeszcze go nie ma
-          curl -sSL https://github.com/allure-framework/allure2/releases/download/2.18.1/allure-2.18.1.tgz -o allure.tgz  # Pobranie Allure
-          tar -zxvf allure.tgz  # Rozpakowanie Allure
-          sudo mv allure-2.18.1 /opt/allure  # Przeniesienie do odpowiedniego katalogu
-          sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure  # Dodanie Allure do PATH
-
       # Sprawdzanie wersji Javy oraz Allure
       - name: Check Java and Allure versions
         run: |
@@ -101,13 +85,27 @@ jobs:
         working-directory: projekt_zaliczeniowy/tests/  # Określamy katalog roboczy z testami
         run: pytest -m ${{ env.marker }} --alluredir=allure-results  # Uruchomienie pytest i zapisanie wyników do katalogu allure-results
 
-      # Generowanie raportu Allure z wyników testów
-      - name: Generate Allure report
-        run: allure generate allure-results -o allure-report --clean  # Generowanie raportu Allure w folderze allure-report
+      # Załadowanie wyników testów z folderu allure-results
+      - name: Load test report history
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      # Generowanie raportu Allure z wyników testów i publikowanie raportu
+      - name: Build test report
+        uses: simple-elf/allure-report-action@v1.7
+        if: always()
+        with:
+          gh_pages: gh-pages
+          allure_history: allure-history
+          allure_results: allure-results  # Folder z wynikami testów
 
       # Wysłanie wygenerowanego raportu jako artefakt, który będzie dostępny po zakończeniu workflow
       - name: Upload Allure report
         uses: actions/upload-artifact@v4  # Akcja do uploadu artefaktów
         with:
           name: allure-report  # Nazwa artefaktu
-          path: allure-report  # Ścieżka do folderu z raportem Allure
+          path: allure-history  # Ścieżka do folderu z raportem Allure
