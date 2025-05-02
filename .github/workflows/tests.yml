@@ -124,17 +124,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const runId = context.runId;
-            const repoOwner = context.repo.owner;
-            const repoName = context.repo.repo;
-            const artifactName = 'allure-report';
-  
-            // Generate the link to the artifact
-            const artifactUrl = `https://github.com/${repoOwner}/${repoName}/actions/runs/${runId}/artifacts`;
-  
-            // Create a comment with the link
-            const comment = `Allure report generated! You can view the report [here](${artifactUrl}).`;
-            
+            const comment = `Allure report is available! You can view the report [here](https://<YOUR_USERNAME>.github.io/<YOUR_REPO>/)`;
             github.rest.issues.createComment({
               ...context.issue,
               body: comment,
