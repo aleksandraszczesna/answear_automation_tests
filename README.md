@@ -85,5 +85,5 @@ pytest -m api
    - `README.md`
 
 ## Raportowanie
-Allure Report   
-[Kliknij tutaj, aby zobaczyć najnowszy raport Allure](https://aleksandraszczesna.github.io/answear_automation_tests/)
+- Allure Report   
+  - [Kliknij tutaj, aby zobaczyć najnowszy raport Allure](https://aleksandraszczesna.github.io/answear_automation_tests/)
