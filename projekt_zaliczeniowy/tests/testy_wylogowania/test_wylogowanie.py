@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
@@ -7,6 +8,8 @@ from projekt_zaliczeniowy.serwisy.wylogowanie.wylogowanie import Logout
 
 
 @pytest.fixture
+@allure.feature("Wylogowanie")
+@allure.story("Poprawne wylogowanie")
 def driver():
     # to run it with gui interface pass False as arg
     yield from selenium_chrome_tests_setup(WEB_WINDOW_SIZE)

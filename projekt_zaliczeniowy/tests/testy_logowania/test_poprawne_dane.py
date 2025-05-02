@@ -1,3 +1,4 @@
+import allure
 import pytest
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -7,6 +8,8 @@ from projekt_zaliczeniowy.serwisy.utils.base_test_utils import selenium_chrome_t
 
 
 @pytest.fixture
+@allure.feature("Logowanie")
+@allure.story("Logowanie z użyciem poprawnych danych")
 def driver():
     yield from selenium_chrome_tests_setup(WEB_WINDOW_SIZE)
 

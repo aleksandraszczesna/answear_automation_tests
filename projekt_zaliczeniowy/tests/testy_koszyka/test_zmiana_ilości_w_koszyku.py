@@ -1,3 +1,4 @@
+import allure
 import pytest
 from playwright.sync_api import sync_playwright
 
@@ -5,7 +6,9 @@ from projekt_zaliczeniowy.serwisy.koszyk.koszyk import Cart
 from projekt_zaliczeniowy.serwisy.utils.base_test_utils import load_configuration
 
 
-@pytest.mark
+@pytest.mark.test
+@allure.feature("Koszyk")
+@allure.story("Zmiana ilości produktów w koszyku")
 def test_product_quantity_change():
     with sync_playwright() as p:
         # Uruchamianie przeglądarki w trybie headless

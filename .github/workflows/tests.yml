@@ -2,7 +2,7 @@ name: Run Automation tests
 
 on:
   schedule:
-    - cron: '30 10 * * *'  # codziennie o 11:30 UTC
+    - cron: '0 9 * * *'  # codziennie o 11:30 UTC
   push:                  # na każde wypchnięcie do repozytorium
   pull_request:          # na każde otwarcie/aktualizację PR
   workflow_dispatch:     # opcjonalnie: ręczne uruchomienie z GitHub GUI

@@ -21,7 +21,7 @@ def test_user_success():
         assert response_body["userType"] == "not logged in"
 
 
-@pytest.mark
+@pytest.mark.test
 @allure.feature("API")
 @allure.story("Błędne pobranie informacji czy uzytkownik jest zalogowany")
 def test_user_failure():

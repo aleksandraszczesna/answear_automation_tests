@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
@@ -7,6 +8,8 @@ from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url, sel
 
 
 @pytest.fixture
+@allure.feature("Sortowanie")
+@allure.story("Sortowanie po dodanych nowościach")
 def driver():
     yield from selenium_chrome_tests_setup(WEB_WINDOW_SIZE)
 

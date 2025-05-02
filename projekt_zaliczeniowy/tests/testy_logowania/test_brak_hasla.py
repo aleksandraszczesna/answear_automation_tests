@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
@@ -5,6 +6,8 @@ from projekt_zaliczeniowy.serwisy.utils.base_test_utils import selenium_chrome_t
 
 
 @pytest.fixture
+@allure.feature("Logowanie")
+@allure.story("Logowanie z użyciem błędnego hasła")
 def driver():
     # to run it with gui interface pass False as arg
     yield from selenium_chrome_tests_setup(WEB_WINDOW_SIZE)

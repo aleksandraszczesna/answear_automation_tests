@@ -29,7 +29,7 @@ def test_products_success():
         assert len(response_body["items"]) == 80
         assert response_body["pseudocategory"]["name"] == "Nowo\u015bci w answear"
 
-@pytest.mark
+@pytest.mark.test
 @allure.feature("API")
 @allure.story("Błędne pobranie danych o dostępnych produktach")
 def test_products_failure():
