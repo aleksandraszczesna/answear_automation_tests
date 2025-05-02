@@ -60,6 +60,12 @@ jobs:
           playwright install                  # Instalacja Playwright i przeglądarek
           pip install pytest allure-pytest
 
+      # Zainstalowanie Allure
+      - name: Install Allure
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y allure
+
       # Sprawdzenie, czy Allure jest zainstalowane
       - name: Check if Allure is installed
         run: allure --version
