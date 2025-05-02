@@ -3,7 +3,7 @@ import pytest
 from playwright.sync_api import sync_playwright
 
 
-@pytest.mark
+@pytest.mark.test
 @allure.feature("API")
 @allure.story("Poprawne pobranie informacji czy uzytkownik jest zalogowany")
 def test_user_success():

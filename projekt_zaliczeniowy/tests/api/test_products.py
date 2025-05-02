@@ -2,7 +2,7 @@ import allure
 import pytest
 from playwright.sync_api import sync_playwright
 
-@pytest.mark
+@pytest.mark.test
 @allure.feature("API")
 @allure.story("Poprawne pobranie danych o dostępnych produktach")
 def test_products_success():
