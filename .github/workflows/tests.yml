@@ -60,11 +60,13 @@ jobs:
           playwright install                  # Instalacja Playwright i przeglądarek
           pip install pytest allure-pytest
 
-      # Zainstalowanie Allure
-      - name: Install Allure
+      # Instalacja Allure Commandline za pomocą curl
+      - name: Install Allure Commandline
         run: |
-          sudo apt-get update
-          sudo apt-get install -y allure
+          curl -sSL https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/2.16.1/allure-commandline-2.16.1.tgz -o allure-commandline.tgz
+          tar -xvzf allure-commandline.tgz
+          sudo mv allure-2.16.1 /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
 
       # Sprawdzenie, czy Allure jest zainstalowane
       - name: Check if Allure is installed
