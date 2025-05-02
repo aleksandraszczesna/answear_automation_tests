@@ -8,12 +8,12 @@ from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url, sel
 
 
 @pytest.fixture
-@pytest.mark.regression
-@allure.feature("Sortowanie")
-@allure.story("Sortowanie po popularności prosuktów")
 def driver():
     yield from selenium_chrome_tests_setup(MOBILE_WINDOW_SIZE)
 
+@pytest.mark.regression
+@allure.feature("Sortowanie")
+@allure.story("Sortowanie po popularności prosuktów")
 def test_most_popular(driver):
     website = Login(driver)
     website.open_website()

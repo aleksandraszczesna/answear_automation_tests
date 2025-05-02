@@ -6,13 +6,13 @@ from projekt_zaliczeniowy.serwisy.utils.base_test_utils import selenium_chrome_t
 
 
 @pytest.fixture
-@pytest.mark.regression
-@allure.feature("Logowanie")
-@allure.story("Logowanie z użyciem błędnego hasła")
 def driver():
     # to run it with gui interface pass False as arg
     yield from selenium_chrome_tests_setup(WEB_WINDOW_SIZE)
 
+@pytest.mark.regression
+@allure.feature("Logowanie")
+@allure.story("Logowanie z użyciem błędnego hasła")
 def test_without_password(driver):
     without_password = Login(driver)
     config_data = without_password.config_data

@@ -6,12 +6,12 @@ from projekt_zaliczeniowy.serwisy.utils.base_test_utils import selenium_chrome_t
 
 
 @pytest.fixture
-@pytest.mark.regression
-@allure.feature("Logowanie")
-@allure.story("Logowanie bez uzupełnienia pola adres email")
 def driver():
     yield from selenium_chrome_tests_setup(WEB_WINDOW_SIZE)
 
+@pytest.mark.regression
+@allure.feature("Logowanie")
+@allure.story("Logowanie bez uzupełnienia pola adres email")
 def test_without_email(driver):
     without_email = Login(driver)
     without_email.open_website()

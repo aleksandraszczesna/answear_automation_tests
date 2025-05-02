@@ -7,12 +7,12 @@ from projekt_zaliczeniowy.serwisy.utils.base_test_utils import selenium_chrome_t
 
 
 @pytest.fixture
-@pytest.mark.regression
-@allure.feature("Sortowanie")
-@allure.story("Sortowanie po najniższej cenie")
 def driver():
     yield from selenium_chrome_tests_setup(WEB_WINDOW_SIZE)
 
+@pytest.mark.regression
+@allure.feature("Sortowanie")
+@allure.story("Sortowanie po najniższej cenie")
 def test_lowest_price(driver):
     website = Login(driver)
     website.open_website()

@@ -8,13 +8,12 @@ from projekt_zaliczeniowy.serwisy.utils.base_test_utils import selenium_chrome_t
 
 
 @pytest.fixture
-@pytest.mark.regression
-@allure.feature("Logowanie")
-@allure.story("Logowanie z użyciem poprawnych danych")
 def driver():
     yield from selenium_chrome_tests_setup(WEB_WINDOW_SIZE)
 
-
+@pytest.mark.regression
+@allure.feature("Logowanie")
+@allure.story("Logowanie z użyciem poprawnych danych")
 def test_correct(driver):
     correct = Login(driver)
     config_data = correct.config_data

@@ -6,12 +6,12 @@ from projekt_zaliczeniowy.serwisy.utils.base_test_utils import selenium_chrome_t
 
 
 @pytest.fixture
-@pytest.mark.regression
-@allure.feature("Logowanie")
-@allure.story("Logowanie z użyciem błędnego adresu email")
 def driver():
     yield from selenium_chrome_tests_setup(WEB_WINDOW_SIZE)
 
+@pytest.mark.regression
+@allure.feature("Logowanie")
+@allure.story("Logowanie z użyciem błędnego adresu email")
 def test_wrong_email(driver):
     wrong_email = Login(driver)
     config_data = wrong_email.config_data

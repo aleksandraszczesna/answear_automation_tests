@@ -97,12 +97,12 @@ jobs:
           allure_history: allure-history
           allure_results: allure-results  # Folder z wynikami testów
 
-#      # Wysłanie wygenerowanego raportu jako artefakt, który będzie dostępny po zakończeniu workflow
-#      - name: Upload Allure report
-#        uses: actions/upload-artifact@v4  # Akcja do uploadu artefaktów
-#        with:
-#          name: allure-report  # Nazwa artefaktu
-#          path: allure-history  # Ścieżka do folderu z raportem Allure
+      # Wysłanie wygenerowanego raportu jako artefakt, który będzie dostępny po zakończeniu workflow
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v4  # Akcja do uploadu artefaktów
+        with:
+          name: allure-report  # Nazwa artefaktu
+          path: allure-history  # Ścieżka do folderu z raportem Allure
 
       # Publikacja raportu na GitHub Pages
       - name: Publish report to GitHub Pages
