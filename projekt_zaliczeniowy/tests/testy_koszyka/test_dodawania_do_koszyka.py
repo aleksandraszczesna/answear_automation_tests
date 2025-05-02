@@ -4,8 +4,7 @@ from playwright.sync_api import sync_playwright
 from projekt_zaliczeniowy.serwisy.koszyk.koszyk import Cart
 from projekt_zaliczeniowy.serwisy.utils.base_test_utils import load_configuration
 
-
-@pytest.mark.test
+@pytest.mark
 def test_add_product_to_cart():
     with sync_playwright() as p:
         # Uruchamianie przeglądarki w trybie headless
