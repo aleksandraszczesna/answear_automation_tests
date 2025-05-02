@@ -9,7 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
-from projekt_zaliczeniowy.serwisy.utils.base_test_utils import load_configuration
+from projekt_zaliczeniowy.services.utils.base_test_utils import load_configuration
 
 screenshots_directory = Path(__file__).parent.parent.parent / 'screenshots'
 

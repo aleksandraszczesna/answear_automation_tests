@@ -1,10 +1,10 @@
 import allure
 import pytest
 
-from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
-from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url, selenium_chrome_tests_setup, \
+from projekt_zaliczeniowy.services.logowanie.logowanie import Login
+from projekt_zaliczeniowy.services.utils.base_test_utils import wait_for_url, selenium_chrome_tests_setup, \
     WEB_WINDOW_SIZE
-from projekt_zaliczeniowy.serwisy.wylogowanie.wylogowanie import Logout
+from projekt_zaliczeniowy.services.wylogowanie.wylogowanie import Logout
 
 
 @pytest.fixture

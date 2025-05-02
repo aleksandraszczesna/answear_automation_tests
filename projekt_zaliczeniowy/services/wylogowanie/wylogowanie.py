@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-from projekt_zaliczeniowy.serwisy.utils.base_test_utils import load_configuration
+from projekt_zaliczeniowy.services.utils.base_test_utils import load_configuration
 
 
 class Logout:

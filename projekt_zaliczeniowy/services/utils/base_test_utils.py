@@ -31,7 +31,7 @@ def wait_for_url(driver, url, time):
 def load_configuration():
     # Pobierz katalog, w którym znajduje się skrypt(ten plik)
     # Określamy katalog główny projektu czyli projekt_zaliczeniowy
-    # cofamy sie do logowanie -> serwisy -> projekt zaliczeniowy i doklejamy katalog i nazwe pliku
+    # cofamy sie do logowanie -> services -> projekt zaliczeniowy i doklejamy katalog i nazwe pliku
     current_directory = Path(__file__).parent.parent.parent
     # Zbuduj pełną ścieżkę do pliku config.yaml w katalogu configuration
     file_path = current_directory/ 'configuration' / 'config.yaml'

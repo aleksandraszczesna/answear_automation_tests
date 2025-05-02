@@ -3,8 +3,8 @@ import pytest
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-from projekt_zaliczeniowy.serwisy.logowanie.logowanie import Login
-from projekt_zaliczeniowy.serwisy.utils.base_test_utils import selenium_chrome_tests_setup, WEB_WINDOW_SIZE
+from projekt_zaliczeniowy.services.logowanie.logowanie import Login
+from projekt_zaliczeniowy.services.utils.base_test_utils import selenium_chrome_tests_setup, WEB_WINDOW_SIZE
 
 
 @pytest.fixture
