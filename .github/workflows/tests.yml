@@ -79,6 +79,11 @@ jobs:
         working-directory: projekt_zaliczeniowy/tests/  # Określamy katalog roboczy z testami
         run: pytest -m ${{ env.marker }} --alluredir=allure-results  # Uruchomienie pytest i zapisanie wyników do katalogu allure-results
 
+      # 🔍 Debug: sprawdzenie zawartości folderu z wynikami testów
+      - name:
+          Debug: list allure-results contents
+        run: ls -l projekt_zaliczeniowy/tests/allure-results || echo "Folder nie istnieje"
+
       # Załadowanie wyników testów z folderu allure-results
       - name: Load test report history
         uses: actions/checkout@v3
