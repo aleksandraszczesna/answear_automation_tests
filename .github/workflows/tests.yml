@@ -51,29 +51,6 @@ jobs:
         with:
           python-version: 3.13
 
-# github ma wtyczke do allure nie jest wymagana jego instalacja
-#      # Instalacja Javy (OpenJDK 11) wymagana do allure
-#      - name: Install Java (OpenJDK 11)
-#        run: |
-#          sudo apt-get update
-#          sudo apt-get install -y openjdk-11-jdk  # Instalacja OpenJDK 11
-#
-#      # Instalacja Allure CLI za pomocą curl
-#      - name: Install Allure CLI
-#        run: |
-#          sudo apt-get update
-#          sudo apt-get install -y curl  # Instalacja curl, jeśli jeszcze go nie ma
-#          curl -sSL https://github.com/allure-framework/allure2/releases/download/2.18.1/allure-2.18.1.tgz -o allure.tgz  # Pobranie Allure
-#          tar -zxvf allure.tgz  # Rozpakowanie Allure
-#          sudo mv allure-2.18.1 /opt/allure  # Przeniesienie do odpowiedniego katalogu
-#          sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure  # Dodanie Allure do PATH
-#
-#      # Sprawdzanie wersji Javy oraz Allure
-#      - name: Check Java and Allure versions
-#        run: |
-#          java -version  # Sprawdzenie wersji Javy
-#          allure --version  # Sprawdzenie wersji Allure
-
       # Instalowanie zależności: aktualizacja pip oraz instalacja zależności z pliku requirements.txt
       # Zainstalowanie Playwright (biblioteka do testów E2E)
       - name: Install dependencies
@@ -126,3 +103,11 @@ jobs:
         with:
           name: allure-report  # Nazwa artefaktu
           path: allure-history  # Ścieżka do folderu z raportem Allure
+
+      # Publikacja raportu na GitHub Pages
+      - name: Publish report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Autoryzacja z tokenem GitHub
+          publish_branch: gh-pages  # Gałąź, na której będzie opublikowany raport
+          publish_dir: allure-history  # Katalog, który zostanie opublikowany na GitHub Pages
