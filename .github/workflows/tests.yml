@@ -51,7 +51,7 @@ jobs:
       - name: Generate Allure report
         run: allure generate allure-results -o allure-report --clean
 
-      - name: Upload Allure report artifact
+      - name: Upload Allure report jako artefakt
         uses: actions/upload-artifact@v3
         with:
           name: allure-report
