@@ -95,7 +95,7 @@ jobs:
         with:
           gh_pages: gh-pages
           allure_history: allure-history
-          allure_results: allure-results  # Folder z wynikami testów
+          allure_results: projekt_zaliczeniowy/tests/allure-results  # Folder z wynikami testów
 
       # Wysłanie wygenerowanego raportu jako artefakt, który będzie dostępny po zakończeniu workflow
       - name: Upload Allure report
