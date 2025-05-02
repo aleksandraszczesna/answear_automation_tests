@@ -22,6 +22,17 @@ jobs:
     runs-on: ubuntu-latest  # Określamy, że workflow będzie uruchomiony na maszynie z systemem Ubuntu
 
     steps:
+      # Domyślny marker w przypadku 'schedule' i 'push' (regression)
+      - name: Set default marker for schedule or push
+        run: |
+          if [[ -z "${{ github.event.inputs.marker }}" ]]; then
+            echo "No marker input provided. Using default: regression"
+            echo "marker=regression" >> $GITHUB_ENV
+          else
+            echo "Using input marker: ${{ github.event.inputs.marker }}"
+            echo "marker=${{ github.event.inputs.marker }}" >> $GITHUB_ENV
+          fi
+
       # Sprawdzenie wersji Chrome, aby upewnić się, że jest zainstalowany
       - name: Check Chrome version
         run: google-chrome --version
