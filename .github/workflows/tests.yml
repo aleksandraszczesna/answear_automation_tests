@@ -115,5 +115,8 @@ jobs:
           publish_branch: gh-pages  # Gałąź, na której będzie opublikowany raport
           publish_dir: allure-history  # Katalog, który zostanie opublikowany na GitHub Pages
 
+      # Link do najnowszego raportu
       - name: Print link to Allure report
-        run: echo "🔗 Allure report: https://aleksandraszczesna.github.io/answear_automation_tests/"
+        run: |
+          echo "🔗 Allure report:"
+          echo "https://aleksandraszczesna.github.io/answear_automation_tests/"
