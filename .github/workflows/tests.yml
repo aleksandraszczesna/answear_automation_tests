@@ -57,11 +57,15 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y openjdk-11-jdk  # Instalacja OpenJDK 11
 
-      # Instalacja Allure CLI
-      - name: Install Allure
+      # Instalacja Allure CLI za pomocą curl
+      - name: Install Allure CLI
         run: |
           sudo apt-get update
-          sudo apt-get install -y allure  # Instalacja Allure na systemie Ubuntu
+          sudo apt-get install -y curl  # Instalacja curl, jeśli jeszcze go nie ma
+          curl -sSL https://github.com/allure-framework/allure2/releases/download/2.18.1/allure-2.18.1.tgz -o allure.tgz  # Pobranie Allure
+          tar -zxvf allure.tgz  # Rozpakowanie Allure
+          sudo mv allure-2.18.1 /opt/allure  # Przeniesienie do odpowiedniego katalogu
+          sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure  # Dodanie Allure do PATH
 
       # Sprawdzanie wersji Javy oraz Allure
       - name: Check Java and Allure versions
