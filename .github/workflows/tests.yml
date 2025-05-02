@@ -119,3 +119,23 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}  # Autoryzacja z tokenem GitHub
           publish_branch: gh-pages  # Gałąź, na której będzie opublikowany raport
           publish_dir: allure-history  # Katalog, który zostanie opublikowany na GitHub Pages
+
+      - name: Add comment with link to Allure report
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const runId = context.runId;
+            const repoOwner = context.repo.owner;
+            const repoName = context.repo.repo;
+            const artifactName = 'allure-report';
+  
+            // Generate the link to the artifact
+            const artifactUrl = `https://github.com/${repoOwner}/${repoName}/actions/runs/${runId}/artifacts`;
+  
+            // Create a comment with the link
+            const comment = `Allure report generated! You can view the report [here](${artifactUrl}).`;
+            
+            github.rest.issues.createComment({
+              ...context.issue,
+              body: comment,
+            });
