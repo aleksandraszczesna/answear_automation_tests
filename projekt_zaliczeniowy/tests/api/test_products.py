@@ -1,7 +1,10 @@
+import allure
 import pytest
 from playwright.sync_api import sync_playwright
 
-@pytest.mark.test
+@pytest.mark
+@allure.feature("API")
+@allure.story("Poprawne pobranie danych o dostępnych produktach")
 def test_products_success():
     with sync_playwright() as p:
         request_context = p.request.new_context()
@@ -26,7 +29,9 @@ def test_products_success():
         assert len(response_body["items"]) == 80
         assert response_body["pseudocategory"]["name"] == "Nowo\u015bci w answear"
 
-@pytest.mark.test
+@pytest.mark
+@allure.feature("API")
+@allure.story("Błędne pobranie danych o dostępnych produktach")
 def test_products_failure():
     with sync_playwright() as p:
         request_context = p.request.new_context()

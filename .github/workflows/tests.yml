@@ -44,6 +44,15 @@ jobs:
         run: |
           cat projekt_zaliczeniowy/configuration/config.yaml
 
-      - name: Run tests
+      - name: Run tests with Allure
         working-directory: projekt_zaliczeniowy/tests/
-        run: pytest
+        run: pytest --alluredir=allure-results
+
+      - name: Generate Allure report
+        run: allure generate allure-results -o allure-report --clean
+
+      - name: Upload Allure report artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: allure-report
