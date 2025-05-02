@@ -10,7 +10,7 @@ on:
       marker:
         description: 'Choose pytest marker to run'
         required: true
-        default: 'regression'  #Domyślny marker
+        default: regression  #Domyślny marker
         type: choice
         options: # Markery, które możemy wybrac
           - regression
