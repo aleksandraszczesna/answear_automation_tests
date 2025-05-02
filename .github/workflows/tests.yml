@@ -116,5 +116,4 @@ jobs:
           publish_dir: allure-history  # Katalog, który zostanie opublikowany na GitHub Pages
 
       - name: Print link to Allure report
-        run:
-          echo "🔗 Allure report: https://aleksandraszczesna.github.io/answear_automation_tests/"
+        run: echo "🔗 Allure report: https://aleksandraszczesna.github.io/answear_automation_tests/"
