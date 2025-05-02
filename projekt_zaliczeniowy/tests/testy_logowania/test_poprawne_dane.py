@@ -8,6 +8,7 @@ from projekt_zaliczeniowy.serwisy.utils.base_test_utils import selenium_chrome_t
 
 
 @pytest.fixture
+@pytest.mark.regression
 @allure.feature("Logowanie")
 @allure.story("Logowanie z użyciem poprawnych danych")
 def driver():

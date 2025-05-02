@@ -30,6 +30,7 @@ def test_products_success():
         assert response_body["pseudocategory"]["name"] == "Nowo\u015bci w answear"
 
 @pytest.mark.api
+@pytest.mark.regression
 @allure.feature("API")
 @allure.story("Błędne pobranie danych o dostępnych produktach")
 def test_products_failure():

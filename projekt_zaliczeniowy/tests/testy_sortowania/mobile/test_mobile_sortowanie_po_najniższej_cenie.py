@@ -7,6 +7,7 @@ from projekt_zaliczeniowy.serwisy.utils.base_test_utils import selenium_chrome_t
 
 
 @pytest.fixture
+@pytest.mark.regression
 @allure.feature("Sortowanie")
 @allure.story("Sortowanie po najniższej cenie")
 def driver():

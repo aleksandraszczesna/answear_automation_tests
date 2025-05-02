@@ -5,7 +5,7 @@ from projekt_zaliczeniowy.serwisy.koszyk.koszyk import Cart
 from projekt_zaliczeniowy.serwisy.utils.base_test_utils import load_configuration
 
 
-@pytest.mark.test
+@pytest.mark.regression
 @allure.feature("Koszyk")
 @allure.story("Usuwanie produktów do koszyka")
 def test_remove_product_to_cart():

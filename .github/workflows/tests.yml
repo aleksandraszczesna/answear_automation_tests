@@ -2,57 +2,69 @@ name: Run Automation tests
 
 on:
   schedule:
-    - cron: '0 9 * * *'  # codziennie o 11:30 UTC
-  push:                  # na każde wypchnięcie do repozytorium
-  pull_request:          # na każde otwarcie/aktualizację PR
-  workflow_dispatch:     # opcjonalnie: ręczne uruchomienie z GitHub GUI
+    - cron: '0 9 * * *'  # Codziennie o 9:00 UTC (czyli 11:00 w Polsce latem)
+  push:                  # Workflow uruchamiany na każde wypchnięcie zmian do repozytorium
+  pull_request:          # Workflow uruchamiany na każde otwarcie lub aktualizację Pull Requesta
+  workflow_dispatch:     # Workflow można uruchomić ręcznie z interfejsu GitHub GUI
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Określamy, że workflow będzie uruchomiony na maszynie z systemem Ubuntu
 
     steps:
+      # Sprawdzenie wersji Chrome, aby upewnić się, że jest zainstalowany
       - name: Check Chrome version
         run: google-chrome --version
 
+      # Sprawdzenie wersji chromedriver, żeby mieć pewność, że jest kompatybilny z wersją Chrome
       - name: Check chromedriver version
         run: chromedriver --version
 
+      # Checkout repozytorium, pobranie najnowszej wersji kodu z repozytorium
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      # Ustawienie Pythona: instalacja odpowiedniej wersji Pythona (tutaj 3.11)
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
 
+      # Instalowanie zależności: aktualizacja pip oraz instalacja zależności z pliku requirements.txt
+      # Zainstalowanie Playwright (biblioteka do testów E2E)
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          playwright install
+          python -m pip install --upgrade pip  # Aktualizacja pip
+          pip install -r requirements.txt    # Instalacja zależności
+          playwright install                  # Instalacja Playwright i przeglądarek
 
+      # Ustawienie zmiennej środowiskowej PYTHONPATH, wskazującej katalog główny projektu
       - name: Set PYTHONPATH
         run: |
-          echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
+          echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV  # Ustawienie PYTHONPATH na katalog roboczy repozytorium
 
+      # Modyfikacja pliku konfiguracyjnego 'config.yaml', aby uruchomić testy w trybie headless (bez GUI)
       - name: Run tests headless
         run: |
-          sed -i 's/headless: false/headless: true/' projekt_zaliczeniowy/configuration/config.yaml
+          sed -i 's/headless: false/headless: true/' projekt_zaliczeniowy/configuration/config.yaml  # Zmiana na headless
 
+      # Pokazanie zmodyfikowanego pliku 'config.yaml', żeby sprawdzić, czy zmiana została zastosowana poprawnie
       - name: Pokaż zmodyfikowany config.yaml
         run: |
-          cat projekt_zaliczeniowy/configuration/config.yaml
+          cat projekt_zaliczeniowy/configuration/config.yaml  # Wyświetlenie zawartości pliku konfiguracyjnego
 
+      # Uruchomienie testów z Allure, zapis wyników do katalogu 'allure-results'
       - name: Run tests with Allure
-        working-directory: projekt_zaliczeniowy/tests/
-        run: pytest --alluredir=allure-results
+        working-directory: projekt_zaliczeniowy/tests/  # Określamy katalog roboczy z testami
+        run: pytest --alluredir=allure-results  # Uruchomienie pytest i zapisanie wyników do katalogu allure-results
 
+      # Generowanie raportu Allure z wyników testów
       - name: Generate Allure report
-        run: allure generate allure-results -o allure-report --clean
+        run: allure generate allure-results -o allure-report --clean  # Generowanie raportu Allure w folderze allure-report
 
-      - name: Upload Allure report jako artefakt
-        uses: actions/upload-artifact@v4
+      # Wysłanie wygenerowanego raportu jako artefakt, który będzie dostępny po zakończeniu workflow
+      - name: Upload Allure report
+        uses: actions/upload-artifact@v4  # Akcja do uploadu artefaktów
         with:
-          name: allure-report
-          path: allure-report
+          name: allure-report  # Nazwa artefaktu
+          path: allure-report  # Ścieżka do folderu z raportem Allure

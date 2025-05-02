@@ -8,6 +8,7 @@ from projekt_zaliczeniowy.serwisy.wylogowanie.wylogowanie import Logout
 
 
 @pytest.fixture
+@pytest.mark.regression
 @allure.feature("Wylogowanie")
 @allure.story("Poprawne wylogowanie")
 def driver():

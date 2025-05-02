@@ -8,6 +8,7 @@ from projekt_zaliczeniowy.serwisy.utils.base_test_utils import wait_for_url, sel
 
 
 @pytest.fixture
+@pytest.mark.regression
 @allure.feature("Sortowanie")
 @allure.story("Sortowanie po popularności prosuktów")
 def driver():

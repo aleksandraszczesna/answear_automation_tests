@@ -22,6 +22,7 @@ def test_user_success():
 
 
 @pytest.mark.api
+@pytest.mark.regression
 @allure.feature("API")
 @allure.story("Błędne pobranie informacji czy uzytkownik jest zalogowany")
 def test_user_failure():
