@@ -61,11 +61,6 @@ jobs:
           pip install -r requirements.txt    # Instalacja zależności
           playwright install                  # Instalacja Playwright i przeglądarek
 
-      # Ustawienie zmiennej środowiskowej PYTHONPATH, wskazującej katalog główny projektu
-      - name: Set PYTHONPATH
-        run: |
-          echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV  # Ustawienie PYTHONPATH na katalog roboczy repozytorium
-
       # Modyfikacja pliku konfiguracyjnego 'config.yaml', aby uruchomić testy w trybie headless (bez GUI)
       - name: Run tests headless
         run: |
@@ -75,11 +70,6 @@ jobs:
       - name: Pokaż zmodyfikowany config.yaml
         run: |
           cat projekt_zaliczeniowy/configuration/config.yaml  # Wyświetlenie zawartości pliku konfiguracyjnego
-
-      - name:  version
-        run:  |
-          pytest --version
-          pip show allure-pytest
 
       # Uruchomienie testów z Allure, zapis wyników do katalogu 'allure-results'
       - name: Run tests with Allure
