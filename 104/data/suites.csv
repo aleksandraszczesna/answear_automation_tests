@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sat May 03 08:39:54 GMT 2025","Sat May 03 08:39:56 GMT 2025","1749","projekt_zaliczeniowy.tests.api","test_products","","","","test_products_success",""
+"passed","Sat May 03 08:39:56 GMT 2025","Sat May 03 08:39:56 GMT 2025","540","projekt_zaliczeniowy.tests.api","test_products","","","","test_products_failure",""
+"passed","Sat May 03 08:39:57 GMT 2025","Sat May 03 08:39:58 GMT 2025","836","projekt_zaliczeniowy.tests.api","test_user","","","","test_user_failure",""
+"passed","Sat May 03 08:39:56 GMT 2025","Sat May 03 08:39:57 GMT 2025","846","projekt_zaliczeniowy.tests.api","test_user","","","","test_user_success",""
