@@ -76,6 +76,11 @@ jobs:
         run: |
           cat projekt_zaliczeniowy/configuration/config.yaml  # Wyświetlenie zawartości pliku konfiguracyjnego
 
+      - name:  version
+        run:  |
+          pytest --version
+          pytest-allure-adaptor --version
+
       # Uruchomienie testów z Allure, zapis wyników do katalogu 'allure-results'
       - name: Run tests with Allure
         working-directory: projekt_zaliczeniowy/tests/  # Określamy katalog roboczy z testami
