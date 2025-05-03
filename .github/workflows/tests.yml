@@ -79,8 +79,7 @@ jobs:
       - name:  version
         run:  |
           pytest --version
-          pytest-allure-adaptor --version
-          allure-pytes --version
+          allure-pytest --version
 
       # Uruchomienie testów z Allure, zapis wyników do katalogu 'allure-results'
       - name: Run tests with Allure
