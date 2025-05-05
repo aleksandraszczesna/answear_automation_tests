@@ -1,16 +1,23 @@
 # Automatyczne testy strony sklepu odzieżowego
-    Ten projekt zawiera zestaw testów automatycznych dla strony internetowej sklepu odzieżowego. Testy obejmują procesy takie jak logowanie, filtrowanie produktów i inne funkcje typowe dla sklepu internetowego.
+Ten projekt zawiera zestaw testów automatycznych dla strony internetowej sklepu odzieżowego. Testy obejmują procesy takie jak logowanie, filtrowanie produktów i inne funkcje typowe dla sklepu internetowego.
 
 ## Spis treści
 1. [Opis](#opis)
 2. [Wymagania](#wymagania)
-3. [Uruchamianie testów](#uruchamianie-testów)
+3. [Instalacja](#instalacja)
+4. [Uruchamianie testów](#uruchamianie-testów)
 5. [Struktura projektu](#struktura-projektu)
-6. [Raportowanie](#raportowanie)
+6. [Integracja ciągła (CI) i raportowanie](#integracja-ciągła-ci-i-raportowanie)
 
 ## Opis
 Testy automatyczne służą do sprawdzania poprawności działania różnych funkcji sklepu internetowego. 
 Testy obejmują m.in. logowanie, wylogowanie, filtrowanie produktów oraz interakcje z koszykiem.
+Testy zostały napisane z wykorzystaniem dwóch różnych frameworków:
+- Playwright
+- Selenium
+
+Testy są uruchamiane z wykorzystaniem frameworka pytest i skonfigurowane za pomocą osobnego pliku konfiguracyjnego.
+- projekt_zaliczeniowy/configuration/config.yaml
 
 ## Wymagania
 Aby uruchomić testy, potrzebujesz:
@@ -20,6 +27,24 @@ Aby uruchomić testy, potrzebujesz:
 - [Selenium](https://www.selenium.dev/)
 - [Playwright](https://playwright.dev/)
 - Przeglądarka Chrome
+
+## Instalacja
+- Aby uruchomić testy, upewnij się, że masz zainstalowane:
+  - Python 3.7 lub nowszy
+  - pip 
+  - Google Chrome (wymagany przez Selenium)
+- Sklonuj repozytorium
+   ```bash
+  git clone https://github.com/aleksandraszczesna/answear_automation_tests.git
+   ```
+- Zainstaluj wymagane biblioteki
+   ```bash
+  pip install -r requirements.txt
+   ```
+- Zainstaluj przeglądarki wymagane przed playwright
+   ```bash
+  playwright install
+   ```
 
 ## Uruchamianie testów
 Testy są uruchamiane za pomocą "pytest" i mogą być kategoryzowane za pomocą markerów: "api", "smoke" i "regression". Dzięki temu można uruchamiać konkretne zestawy testów w zależności od potrzeb.
@@ -84,6 +109,20 @@ pytest -m api
    - `pytest.ini` `Konfiguracja pytest`
    - `README.md`
 
-## Raportowanie
-- Allure Report   
+## Integracja ciągła (CI) i raportowanie
+Testy automatyczne są uruchamiane w ramach GitHub Actions w następujących przypadkach:
+na każde wypchnięcie zmian (push) do repozytorium,
+przy otwarciu lub aktualizacji Pull Requesta (pull_request),
+codziennie o godzinie 9:00 UTC (11:00 czasu polskiego),
+ręcznie z poziomu interfejsu GitHub (workflow_dispatch) z możliwością wyboru markera testowego.
+
+### Obsługiwane markery testów:
+- regression – domyślny zestaw testów regresyjnych,
+- smoke – podstawowe testy sprawdzające stabilność środowiska,
+- api – testy REST API.
+
+### Raport z testów
+Po każdym przebiegu CI generowany jest raport w formacie Allure, który automatycznie publikowany jest na GitHub Pages:
   - [Kliknij tutaj, aby zobaczyć najnowszy raport Allure](https://aleksandraszczesna.github.io/answear_automation_tests/)
+
+Raport zawiera wyniki wszystkich uruchomionych testów wraz ze statystykami, logami oraz ewentualnymi błędami.
