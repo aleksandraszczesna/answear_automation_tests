@@ -1,4 +1,4 @@
-headless: true
+headless: false
 false_credentials:
   email: 'test-mailgmail.com'
   password: 'zlehaslo'
