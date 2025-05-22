@@ -1,0 +1,5 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"","API","Poprawne pobranie danych o dostępnych produktach","0","0","1","0","0"
+"","API","Poprawne pobranie informacji czy uzytkownik jest zalogowany","0","0","1","0","0"
+"","API","Błędne pobranie informacji czy uzytkownik jest zalogowany","0","0","1","0","0"
+"","API","Błędne pobranie danych o dostępnych produktach","0","0","1","0","0"
