@@ -14,7 +14,7 @@ def driver():
 @pytest.mark.regression
 @allure.feature("Sortowanie")
 @allure.story("Sortowanie po dodanych nowościach")
-def test_most_popular(driver):
+def test_newest(driver):
     website = Login(driver)
     website.open_website()
     website.accept_cookies()

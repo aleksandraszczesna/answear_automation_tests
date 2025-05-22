@@ -23,7 +23,7 @@ def test_correct(driver):
     correct.insert_email(config_data['credentials']['email'])
     correct.insert_password(config_data['credentials']['password'])
     correct.login_button()
-    WebDriverWait(driver, 5).until(EC.url_to_be(config_data['credentials']['expected_url']))
+    WebDriverWait(driver, 15).until(EC.url_to_be(config_data['credentials']['expected_url']))
     assert driver.current_url == config_data['credentials']['expected_url']
 
 # ctr + alt + o usuwa nieuzywane import

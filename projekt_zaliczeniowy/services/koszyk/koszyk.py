@@ -18,20 +18,16 @@ class Cart:
 
     def get_first_element_from_the_site(self):
         self.page.wait_for_selector('[data-test="outfitProduct"]')
-        all_elements = self.page.query_selector_all('[data-test="outfitProduct"]')
-        elements_with_positions = [(el.bounding_box()["y"], el) for el in all_elements if el.bounding_box() is not None]
-        elements_with_positions.sort(key=lambda x: x[0])
-        top_element = elements_with_positions[0][1]
-        top_element.click()
+        self.page.locator('[data-test="outfitProduct"]').first.click()
 
     def add_to_cart(self):
-        self.page.click('[data-test="modal-close-button"]')  # zamykanie okna zapisu do newslettera
         try:
+            self.page.click('[data-test="modal-close-button"]')  # zamykanie okna zapisu do newslettera
             self.page.wait_for_selector('[data-test="size_dropdown"]')
             self.page.click('[data-test="size_dropdown"]')
         except TimeoutError:
-            print("Przycisk size dropdown nie pojawił się – kontynuuję dalej.")
-
+            print("Przycisk nie pojawił się – kontynuuję dalej.")
+        print("dupa")
         locator_xs = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',
                                        has_text="XS")
         locator_s = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',
@@ -57,6 +53,7 @@ class Cart:
         self.wait_for_add_item()
 
     def wait_for_add_item(self):
+        print("dupa2")
         counter = 0
         while not self.page.locator('[data-test="notificationSuccess"]').is_visible() and counter < 5:
             self.page.click('[data-test="add_to_cart"]')
