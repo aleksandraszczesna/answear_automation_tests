@@ -28,15 +28,15 @@ class Cart:
         except TimeoutError:
             print("Przycisk nie pojawił się – kontynuuję dalej.")
         locator_xs = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',
-                                       has_text="XS")
+                                       has_text="XS").first
         locator_s = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',
-                                      has_text="S")
+                                      has_text="S").first
         locator_m = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',
-                                      has_text="M")
+                                      has_text="M").first
         locator_l = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',
-                                      has_text="L")
+                                      has_text="L").first
         locator_xl = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',
-                                       has_text="XL")
+                                       has_text="XL").first
         if locator_xs.is_visible():
             locator_xs.click()
         elif locator_s.is_visible():
