@@ -27,7 +27,6 @@ class Cart:
             self.page.click('[data-test="size_dropdown"]')
         except TimeoutError:
             print("Przycisk nie pojawił się – kontynuuję dalej.")
-        print("dupa")
         locator_xs = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',
                                        has_text="XS")
         locator_s = self.page.locator('li[data-test=available_size]:has(span.BaseSelectItem__selectItemLabel__jxiCx)',
@@ -53,7 +52,6 @@ class Cart:
         self.wait_for_add_item()
 
     def wait_for_add_item(self):
-        print("dupa2")
         counter = 0
         while not self.page.locator('[data-test="notificationSuccess"]').is_visible() and counter < 5:
             self.page.click('[data-test="add_to_cart"]')
