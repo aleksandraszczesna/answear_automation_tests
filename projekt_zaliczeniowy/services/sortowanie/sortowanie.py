@@ -1,4 +1,4 @@
-from selenium.common import TimeoutException
+from selenium.common import TimeoutException, ElementClickInterceptedException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -98,21 +98,28 @@ class Sorting:
 
     def submit_button_click(self):
         try:
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.submit_button))
+            WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(self.submit_button))
             self.driver.find_element(*self.submit_button).click()
         except TimeoutException:
             print("Przycisk zapisywania filtrów nie jest klikalny.")
 
     def view_products_click(self):
         try:
+            # Czekamy aż loader zniknie, jeśli taki istnieje
+            WebDriverWait(self.driver, 20).until(
+                EC.invisibility_of_element_located((By.CLASS_NAME, "Filters__filtersLoader__qVvBU"))
+            )
+
             WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable(self.view_products))
             self.driver.find_element(*self.view_products).click()
         except TimeoutException:
             print("Przycisk pokaż produkty nie jest klikalny.")
+        except ElementClickInterceptedException:
+            print("Kliknięcie w przycisk 'Pokaż produkty' zostało przechwycone przez inny element.")
 
     def product_list(self):
         try:
-           WebDriverWait(self.driver, 10).until(EC.visibility_of_all_elements_located(self.regular_price))
+           WebDriverWait(self.driver, 20).until(EC.visibility_of_all_elements_located(self.regular_price))
            return self.driver.find_elements(*self.regular_price)
         except Exception as e:
             print(f"Ceny produktów nie są dostępne: {e}")
