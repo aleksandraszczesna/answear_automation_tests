@@ -1,0 +1,5 @@
+Przycisk akceptacji cookies nie został znaleziony.
+Pole 'Adres e-mail' nie jest klikalne.
+Pole 'Hasło' nie zostało znalezione w oczekiwanym czasie.
+Przycisk 'Zaloguj się' nie jest klikalny.
+Brak komunikatu błędu hasła.
