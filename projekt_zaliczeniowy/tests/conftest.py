@@ -8,7 +8,7 @@ def pytest_runtest_makereport(item, call):
     print("screen1")
     if report.when == "call" and report.failed:
         print("screen2")
-        driver = item.funcargs.get("browser")
+        driver = item.funcargs.get("driver")
         if driver:
             print("screen3")
             screenshot = driver.get_screenshot_as_png()
