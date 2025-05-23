@@ -1,8 +1,0 @@
-Przycisk akceptacji cookies nie został znaleziony.
-Przycisk filtr nie jest klikalny.
-Przycisk sortowania nie jest klikalny.
-Przycisk sortowania od najdroższych nie jest klikalny.
-Przycisk zapisywania filtrów nie jest klikalny.
-Przycisk pokaż produkty nie jest klikalny.
-Ceny produktów nie są dostępne: Message: 
-
