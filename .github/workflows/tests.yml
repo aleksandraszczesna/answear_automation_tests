@@ -97,6 +97,7 @@ jobs:
       # Wysłanie wygenerowanego raportu jako artefakt, który będzie dostępny po zakończeniu workflow
       - name: Upload Allure report
         uses: actions/upload-artifact@v4  # Akcja do uploadu artefaktów
+        if: always()
         with:
           name: allure-report  # Nazwa artefaktu
           path: allure-history  # Ścieżka do folderu z raportem Allure
@@ -112,6 +113,7 @@ jobs:
 
       # Link do najnowszego raportu
       - name: Print link to Allure report
+        if: always()
         run: |
           echo "🔗 Allure report:"
           echo "https://aleksandraszczesna.github.io/answear_automation_tests/"

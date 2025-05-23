@@ -9,6 +9,7 @@ def driver():
     yield from selenium_chrome_tests_setup(WEB_WINDOW_SIZE)
 
 @pytest.mark.regression
+@pytest.mark.smoke
 @allure.feature("Logowanie")
 @allure.story("Logowanie z użyciem błędnego hasła")
 def test_wrong_password(driver):
