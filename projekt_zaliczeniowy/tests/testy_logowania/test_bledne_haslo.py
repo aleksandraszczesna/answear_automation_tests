@@ -16,7 +16,7 @@ def test_wrong_password(driver):
     config_data = wrong_password.config_data
     wrong_password.open_website()
     wrong_password.accept_cookies()
-    wrong_password.user_account()
+    #wrong_password.user_account()
     wrong_password.insert_email(config_data['credentials']['email'])
     wrong_password.insert_password(config_data['false_credentials']['password'])
     wrong_password.login_button()
