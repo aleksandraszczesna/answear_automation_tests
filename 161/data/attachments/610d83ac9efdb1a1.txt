@@ -1,7 +1,0 @@
-Przycisk akceptacji cookies nie został znaleziony.
-Przycisk Nowości nie jest klikalny.
-Przycisk filtr nie jest klikalny.
-Przycisk sortowania nie jest klikalny.
-Przycisk sortowania od najnowszych nie jest klikalny.
-Przycisk cofania filtrów nie jest klikalny.
-Przycisk pokaż produkty nie jest klikalny.
