@@ -1,2 +1,0 @@
-Przycisk akceptacji cookies nie został znaleziony.
-Kliknięcie w przycisk 'Pokaż produkty' zostało przechwycone przez inny element.
