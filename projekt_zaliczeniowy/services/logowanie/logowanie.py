@@ -20,11 +20,10 @@ class Login:
         self.user_account_icon = (By.CSS_SELECTOR, '[data-test="my_account_icon"]')
         self.email_field = (By.ID, '_username')
         self.password_field = (By.ID, '_password')
-        self.login_button_click = (By.CSS_SELECTOR, '[class="btn xs-12 l-12 btnPrimary btn--fluid Button__buttonContainerFontWeight__3oaib"]')
+        self.login_button_click = (By.CSS_SELECTOR, '[class="btn btnPrimary xs-12 btnFluid"]')
         self.error_message_email = (By.CSS_SELECTOR, '[class="fieldError FieldError__error__eoDKL"]')
         self.error_message_password = (By.XPATH, '//*[@id="root"]/main/div/div/div[2]/div[2]/div[2]/div/div[1]/div[1]/div/form/div[2]/span[2]')
         self.config_data = load_configuration()
-
 
 
     def open_website(self):
