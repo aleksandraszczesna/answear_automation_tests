@@ -1,0 +1,5 @@
+Przycisk akceptacji cookies nie został znaleziony.
+Przycisk Nowości nie jest klikalny.
+Przycisk filtr nie jest klikalny.
+Przycisk sortowania od najnowszych nie jest klikalny.
+Przycisk zapisywania filtrów nie jest klikalny.
