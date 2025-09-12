@@ -1,0 +1,2 @@
+Przycisk akceptacji cookies nie został znaleziony.
+Komunikat błędu: Nieprawidłowy adres mailowy
