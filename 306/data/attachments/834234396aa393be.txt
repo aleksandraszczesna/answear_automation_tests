@@ -1,0 +1,5 @@
+Przycisk akceptacji cookies nie został znaleziony.
+Przycisk sortowania od najdroższych nie jest klikalny.
+Przycisk zapisywania filtrów nie jest klikalny.
+Cena wynosi: 169.99, a następna wynosi: 169.99
+Cena wynosi: 169.99, a następna wynosi: 189.99
