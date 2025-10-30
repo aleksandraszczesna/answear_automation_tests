@@ -1,0 +1,5 @@
+Przycisk akceptacji cookies nie został znaleziony.
+Przycisk sortowania od najtańszych nie jest klikalny.
+Przycisk zapisywania filtrów nie jest klikalny.
+Poprzednia cena wynosi: 0, a następna wynosi: 769.99
+Poprzednia cena wynosi: 769.99, a następna wynosi: 219.99

@@ -1,0 +1,3 @@
+Przycisk akceptacji cookies nie został znaleziony.
+Przycisk 'Zaloguj się' nie jest klikalny.
+Brak komunikatu błędu hasła.
