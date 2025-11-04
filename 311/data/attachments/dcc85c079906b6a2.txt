@@ -1,4 +1,0 @@
-Przycisk akceptacji cookies nie został znaleziony.
-Przycisk sortowania od popularności nie jest klikalny.
-Przycisk zapisywania filtrów nie jest klikalny.
-Przycisk pokaż produkty nie jest klikalny.
